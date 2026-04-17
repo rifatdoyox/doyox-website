@@ -1,4 +1,3 @@
-// script.js – interactive nav, smooth scroll, parallax effect, form handling
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
@@ -9,80 +8,51 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.toggle('active');
     });
   }
-  // Close mobile menu on link click
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-      hamburger.classList.remove('active');
-    });
-  });
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === "#" || href === "") return;
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200;
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const inc = target / speed;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + inc);
+        setTimeout(updateCount, 1);
+      } else {
+        counter.innerText = target;
       }
-    });
+    };
+    // Intersection Observer to start animation when visible
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        updateCount();
+        observer.unobserve(counter);
+      }
+    }, { threshold: 0.5 });
+    observer.observe(counter);
   });
 
-  // Navbar background change on scroll
-  const navbar = document.getElementById('navbar');
+  // Newsletter form (prevent default, show message)
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for subscribing!');
+      newsletterForm.reset();
+    });
+  }
+
+  // Navbar background on scroll
   window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
-      navbar.style.background = 'rgba(2,6,23,0.95)';
+      navbar.style.background = 'rgba(255,255,255,0.98)';
+      navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
     } else {
-      navbar.style.background = 'rgba(2,6,23,0.8)';
+      navbar.style.background = 'rgba(255,255,255,0.95)';
+      navbar.style.boxShadow = 'none';
     }
   });
-
-  // Mouse-responsive shape movement (parallax)
-  const shape = document.querySelector('.floating-shape');
-  if (shape) {
-    document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 30;
-      const y = (e.clientY / window.innerHeight - 0.5) * 30;
-      shape.style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
-    });
-  }
-
-  // Registration form handler (prevent default, show message)
-  const form = document.getElementById('registerForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('🚀 Thank you for your interest! The Doyox team will reach out soon.');
-      form.reset();
-    });
-  }
-
-  // Simple performance-aware animation: reveal elements on scroll (basic)
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.glass, .venture-card, .about-card, .roadmap-card').forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-});
-
-// Fallback for logo: if image fails, keep text visible.
-window.addEventListener('load', () => {
-  const logoImg = document.getElementById('logoImg');
-  if (logoImg) {
-    logoImg.onerror = () => {
-      logoImg.style.display = 'none';
-    };
-  }
 });
