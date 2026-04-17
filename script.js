@@ -1,58 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu toggle
+  // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
-  if (hamburger) {
-    hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    });
-  }
+  hamburger?.addEventListener('click', () => navMenu.classList.toggle('active'));
+  document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
 
-  // Counter animation
-  const counters = document.querySelectorAll('.counter');
-  const speed = 200;
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-      const inc = target / speed;
-      if (count < target) {
-        counter.innerText = Math.ceil(count + inc);
-        setTimeout(updateCount, 1);
-      } else {
-        counter.innerText = target;
+  // Smooth scroll for hash links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.pushState(null, null, href);
       }
-    };
-    // Intersection Observer to start animation when visible
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        updateCount();
-        observer.unobserve(counter);
-      }
-    }, { threshold: 0.5 });
-    observer.observe(counter);
+    });
   });
 
-  // Newsletter form (prevent default, show message)
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you for subscribing!');
-      newsletterForm.reset();
-    });
-  }
-
-  // Navbar background on scroll
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.style.background = 'rgba(255,255,255,0.98)';
-      navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-    } else {
-      navbar.style.background = 'rgba(255,255,255,0.95)';
-      navbar.style.boxShadow = 'none';
-    }
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) current = section.getAttribute('id');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+    });
+    // Navbar background
+    document.getElementById('navbar').style.background = scrollY > 50 ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.95)';
   });
+
+  // Newsletter form
+  document.getElementById('newsletterForm')?.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thank you for subscribing!');
+    e.target.reset();
+  });
+
+  // Animate circles already handled by CSS
 });
