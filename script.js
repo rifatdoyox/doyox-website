@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   hamburger?.addEventListener('click', () => navMenu.classList.toggle('active'));
   document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => navMenu.classList.remove('active')));
 
-  // Smooth scroll for hash links
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
@@ -31,16 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.remove('active');
       if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
     });
-    // Navbar background
     document.getElementById('navbar').style.background = scrollY > 50 ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.95)';
   });
 
-  // Newsletter form
+  // Newsletter
   document.getElementById('newsletterForm')?.addEventListener('submit', e => {
     e.preventDefault();
     alert('Thank you for subscribing!');
     e.target.reset();
   });
-
-  // Animate circles already handled by CSS
 });
