@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Primary Meta Tags -->
   <title>Doyox – Empowering ideas, building futures</title>
-  <meta name="title" content="Doyox – Empowering ideas, building futures">
-  <meta name="description" content="A home for dreamers. Parent innovation company. Formerly Doyosoft. Startup support, micro‑business acceleration, and future‑ready platforms.">
-  <meta name="keywords" content="Doyox, Doyosoft, innovation, startup, incubation, Bangladesh, Md Rifat Al Mahmud, GrowMicrow">
-  <meta name="author" content="Doyox">
-  <!-- Favicon (fixed path: directly in root) -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <meta name="description" content="A home for dreamers. Parent innovation company.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
@@ -23,273 +19,158 @@
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
-      <a href="#" class="logo">
-        <!-- Fixed path: logo.png in root -->
-        <img src="logo.png" alt="Doyox Logo" class="logo-img" id="logoImg">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Doyox" class="logo-img">
         <span class="logo-text">DOYOX</span>
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="#ventures" class="nav-link">Ventures</a></li>
-        <li class="nav-item"><a href="#what-we-do" class="nav-link">What We Do</a></li>
-        <li class="nav-item"><a href="#join" class="nav-link">Join & Connect</a></li>
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="ventures.html" class="nav-link">Ventures</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="founders.html" class="nav-link">Founders</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="bn">BN</button>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section (Home) -->
-  <section id="home" class="hero">
-    <div class="hero-overlay"></div>
+  <!-- Hero Section with Background Image -->
+  <section class="hero-home" style="background-image: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.9)), url('images/hero-bg.jpg');">
     <div class="container hero-content">
-      <div class="hero-badge">Formerly Doyosoft · Rebranded 2024</div>
-      <h1 class="hero-title">Empowering ideas, <br>building futures</h1>
-      <p class="hero-subtitle">A home for dreamers. Parent innovation company from Dhaka, Bangladesh. <br>45+ team · 150+ projects · 25k+ users across platforms.</p>
+      <span class="badge" data-i18n="badge">Formerly Doyosoft · Rebranded 2024</span>
+      <h1 class="hero-title">
+        <span data-i18n="heroTitle1">Empowering ideas,</span><br>
+        <span class="highlight" data-i18n="heroTitle2">building futures</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="heroSub">A home for dreamers. Parent innovation company from Dhaka, Bangladesh.<br>45+ team · 150+ projects · 25k+ users.</p>
       <div class="hero-cta">
-        <a href="#join" class="btn btn-primary">Join & Connect <i class="fas fa-arrow-right"></i></a>
-        <a href="#about" class="btn btn-outline">Discover Doyox</a>
+        <a href="contact.html" class="btn btn-primary" data-i18n="joinBtn">Join & Connect <i class="fas fa-arrow-right"></i></a>
+        <a href="about.html" class="btn btn-outline" data-i18n="discoverBtn">Discover Doyox</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat-item"><span class="stat-number">4+</span> <span class="stat-label">Years</span></div>
-        <div class="stat-item"><span class="stat-number">150+</span> <span class="stat-label">Projects</span></div>
-        <div class="stat-item"><span class="stat-number">300+</span> <span class="stat-label">Happy clients</span></div>
-        <div class="stat-item"><span class="stat-number">95%</span> <span class="stat-label">Success rate</span></div>
-      </div>
-    </div>
-    <!-- Mouse-responsive shape (simulated with CSS) -->
-    <div class="floating-shape"></div>
-  </section>
-
-  <!-- About / Identity Section -->
-  <section id="about" class="section about-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Company Identity</span>
-        <h2>From Doyosoft to Doyox — a sharper, global identity</h2>
-        <p class="section-sub">"In today's fast-changing world, a brand cannot stay limited by its past. It must evolve, grow, and match the size of its vision." — Md Rifat Al Mahmud, Founder & CEO</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-card glass">
-          <i class="fas fa-building"></i>
-          <h3>Current Identity</h3>
-          <ul>
-            <li><strong>Official Name:</strong> Doyox</li>
-            <li><strong>Former Name:</strong> Doyosoft (rebranded 2024)</li>
-            <li><strong>Founded:</strong> 2021 · Type: Parent innovation company</li>
-            <li><strong>HQ:</strong> Dhaka, Bangladesh</li>
-            <li><strong>Team:</strong> 45+ across 5 departments</li>
-          </ul>
+      <!-- Animated Stats Circles -->
+      <div class="stats-circle-container">
+        <div class="stat-circle">
+          <div class="circle-chart" data-percent="95">
+            <svg viewBox="0 0 36 36">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="circle-fill" stroke-dasharray="95, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="circle-percent">95%</text>
+            </svg>
+            <span data-i18n="successRate">Success Rate</span>
+          </div>
         </div>
-        <div class="about-card glass">
-          <i class="fas fa-users"></i>
-          <h3>Leadership</h3>
-          <ul>
-            <li><strong>Founder & CEO:</strong> Md Rifat Al Mahmud</li>
-            <li><strong>Strategic Advisor:</strong> Muntasir Mahin (Creative & presentation lead)</li>
-          </ul>
-          <h3 style="margin-top:1.5rem;">Rebranding drivers</h3>
-          <ul>
-            <li>Expanded beyond software</li>
-            <li>Ecosystem approach</li>
-            <li>Global ambition</li>
-            <li>Future‑proof for emerging tech</li>
-          </ul>
+        <div class="stat-circle">
+          <div class="circle-chart" data-percent="150">
+            <svg viewBox="0 0 36 36">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="circle-fill" stroke-dasharray="150, 200" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="circle-percent">150+</text>
+            </svg>
+            <span data-i18n="projects">Projects</span>
+          </div>
         </div>
-        <div class="about-card glass">
-          <i class="fas fa-rocket"></i>
-          <h3>Mission & Vision</h3>
-          <p><strong>Mission:</strong> Empower innovators, creators, and micro‑entrepreneurs with digital solutions, strategic guidance, and future‑ready platforms.</p>
-          <p><strong>Vision:</strong> Creating a home for dreamers where ideas are not ignored — they are built.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Core Principles & Values -->
-  <section class="section values-section">
-    <div class="container">
-      <div class="values-wrapper glass-dark">
-        <div class="principles">
-          <h3>Three core principles</h3>
-          <ul class="principles-list">
-            <li><i class="fas fa-chart-line"></i> <strong>Growth for Everyone</strong> – Helping people grow businesses, product ideas, or dreams.</li>
-            <li><i class="fas fa-hand-holding-usd"></i> <strong>Investment in Real Potential</strong> – Investing in people, micro‑businesses, deserving ideas.</li>
-            <li><i class="fas fa-network-wired"></i> <strong>Building an Ecosystem</strong> – Multiple platforms for thriving without complicated barriers.</li>
-          </ul>
-        </div>
-        <div class="values">
-          <h3>Core Values</h3>
-          <div class="values-grid">
-            <div class="value-tag">Innovation First</div>
-            <div class="value-tag">Collaborative Spirit</div>
-            <div class="value-tag">Empowerment Driven</div>
-            <div class="value-tag">Human-Centered</div>
+        <div class="stat-circle">
+          <div class="circle-chart" data-percent="25">
+            <svg viewBox="0 0 36 36">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="circle-fill" stroke-dasharray="25, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="circle-percent">25%</text>
+            </svg>
+            <span data-i18n="growth">Monthly Growth</span>
           </div>
         </div>
       </div>
     </div>
+    <div class="wave-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+      </svg>
+    </div>
   </section>
 
-  <!-- History Timeline & Stats -->
-  <section class="section history-section">
+  <!-- Key Highlights with Chart -->
+  <section class="section stats-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Our journey</span>
-        <h2>4+ years of innovation, 150+ projects completed</h2>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item"><span class="year">2021</span> Founded as Doyosoft · 3 developers</div>
-        <div class="timeline-item"><span class="year">2022</span> 50+ projects · team 15</div>
-        <div class="timeline-item"><span class="year">2023</span> Vision expansion · support entrepreneurs</div>
-        <div class="timeline-item"><span class="year">2024</span> Rebrand to Doyox · ecosystem approach</div>
-        <div class="timeline-item"><span class="year">2025</span> Ecosystem growth · 100+ projects</div>
-        <div class="timeline-item"><span class="year">2026</span> 45+ team · 150+ projects</div>
-      </div>
-      <div class="key-stats-mini">
-        <span><i class="fas fa-check-circle"></i> 25% monthly growth</span>
-        <span><i class="fas fa-users"></i> 25,000+ total users</span>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-building"></i>
+          <h3><span class="counter" data-target="4">0</span>+</h3>
+          <p data-i18n="years">Years of innovation</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <h3><span class="counter" data-target="300">0</span>+</h3>
+          <p data-i18n="clients">Happy clients</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-globe"></i>
+          <h3><span class="counter" data-target="25000">0</span></h3>
+          <p data-i18n="users">Total users</p>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-chart-line"></i>
+          <h3><span class="counter" data-target="25">0</span>%</h3>
+          <p data-i18n="growthRate">Monthly growth</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Ventures & Platforms -->
-  <section id="ventures" class="section ventures-section">
+  <!-- Featured Ventures -->
+  <section class="section ventures-preview">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Active Ventures</span>
-        <h2>Our ecosystem of platforms</h2>
+        <span class="section-tag" data-i18n="venturesTag">Our Ecosystem</span>
+        <h2 data-i18n="venturesTitle">Active <span class="highlight">Ventures</span></h2>
       </div>
-      <div class="ventures-grid">
-        <div class="venture-card">
-          <div class="venture-badge live">Live</div>
+      <div class="ventures-preview-grid">
+        <div class="venture-preview-card">
+          <div class="venture-icon"><i class="fas fa-store"></i></div>
           <h3>GrowMicrow</h3>
-          <p class="venture-desc">Micro‑ecommerce platform</p>
-          <ul class="venture-metrics">
-            <li>500+ stores</li>
-            <li>2,500+ monthly sales</li>
-            <li>1,200+ active sellers</li>
-            <li>35% monthly growth</li>
-          </ul>
-          <a href="#" class="venture-link">GrowMicrow.com <i class="fas fa-external-link-alt"></i></a>
+          <p>500+ stores · 2,500+ monthly sales</p>
+          <a href="ventures.html" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="venture-card">
-          <div class="venture-badge beta">Beta</div>
+        <div class="venture-preview-card">
+          <div class="venture-icon"><i class="fas fa-tractor"></i></div>
           <h3>KrishiPath</h3>
-          <p>Agricultural technology · Pilot phase</p>
+          <p>Agricultural tech · Pilot phase</p>
+          <a href="ventures.html" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="venture-card">
-          <div class="venture-badge live">Live</div>
+        <div class="venture-preview-card">
+          <div class="venture-icon"><i class="fas fa-graduation-cap"></i></div>
           <h3>Kafaah</h3>
           <p>Skill development · Active community</p>
+          <a href="ventures.html" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="venture-card">
-          <div class="venture-badge dev">In Development</div>
-          <h3>Future Labs</h3>
-          <p>Emerging technologies · Innovation pipeline</p>
-        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="ventures.html" class="btn btn-outline" data-i18n="viewAllVentures">View All Ventures <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- What We Do (Services) -->
-  <section id="what-we-do" class="section services-section">
+  <!-- Testimonial / Founder Quote -->
+  <section class="section quote-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">What We Do</span>
-        <h2>Five core service areas</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-item"><i class="fas fa-seedling"></i> Startup Support – Incubation & acceleration</div>
-        <div class="service-item"><i class="fas fa-store"></i> Micro‑Business Acceleration</div>
-        <div class="service-item"><i class="fas fa-code"></i> Tech Development – Product engineering</div>
-        <div class="service-item"><i class="fas fa-chart-pie"></i> Investment + Equity Model</div>
-        <div class="service-item"><i class="fas fa-bullhorn"></i> Brand Building Support</div>
-      </div>
-      <div class="incubation-highlight glass">
-        <h3><i class="fas fa-flask"></i> 12‑week Incubation Program</h3>
-        <p>Product guidance, market fit, legal & compliance, 50+ mentors. <br>4‑Step: Discovery → Program Matching → Execution Support → Growth & Funding.</p>
-        <div class="success-stories">
-          <span><strong>Tech Startup:</strong> $500K seed, 300% growth, $2M valuation</span>
-          <span><strong>Micro‑Business:</strong> 400% revenue increase, 8 new markets</span>
-          <span><strong>Brand Transformation:</strong> 250% engagement, 10K+ new users</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Roadmap 2025-2027 -->
-  <section class="section roadmap-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Strategic Focus</span>
-        <h2>Roadmap 2025–2027</h2>
-      </div>
-      <div class="roadmap-cards">
-        <div class="roadmap-card"><span class="year-badge">2025</span> Rebrand & Core Launch · pilot partners</div>
-        <div class="roadmap-card"><span class="year-badge">2026</span> Scale Labs & Network · micro‑investment pilots</div>
-        <div class="roadmap-card"><span class="year-badge">2027</span> Platform & Impact · cross‑product integrations</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Partnership paths & Founder note -->
-  <section class="section partnership-section">
-    <div class="container">
-      <div class="split-layout">
-        <div class="partnership-box glass">
-          <h3>Partnership paths</h3>
-          <div class="path-item"><i class="fas fa-user-tie"></i> <strong>Entrepreneurs:</strong> Incubation, mentorship, investment</div>
-          <div class="path-item"><i class="fas fa-chart-bar"></i> <strong>Investors:</strong> Curated deal flow, due diligence</div>
-          <div class="path-item"><i class="fas fa-handshake"></i> <strong>Partners:</strong> Strategic collabs, joint ventures</div>
-        </div>
-        <div class="founder-note glass">
-          <i class="fas fa-quote-left"></i>
-          <p>"I'm Md Rifat Al Mahmud, and when I started this journey, I only wanted to create something meaningful. Today, as Doyosoft becomes Doyox, I feel we are finally stepping into that future."</p>
-          <span class="founder-name">— Founder & CEO</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Join & Connect + Registration -->
-  <section id="join" class="section join-section">
-    <div class="container">
-      <div class="join-wrapper glass-dark">
-        <div class="join-info">
-          <h2>Join & Connect</h2>
-          <p class="join-tagline">"Nothing ends — everything upgrades"</p>
-          <div class="contact-details">
-            <p><i class="fas fa-envelope"></i> doyoxgroup@gmail.com · muntasirdoyotec@gmail.com</p>
-            <p><i class="fas fa-phone-alt"></i> +880 1581 483444 (WhatsApp/Support) · +880 1993 670283 (3PM–9PM)</p>
-            <p><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh · Sun–Thu 10am–6pm (by appointment)</p>
+      <div class="quote-card">
+        <i class="fas fa-quote-left"></i>
+        <p data-i18n="founderQuote">"I'm Md Rifat Al Mahmud, and when I started this journey, I only wanted to create something meaningful. Today, as Doyosoft becomes Doyox, I feel we are finally stepping into that future."</p>
+        <div class="quote-author">
+          <img src="images/team/rifat.jpg" alt="Md Rifat Al Mahmud" class="author-img">
+          <div>
+            <h4>Md Rifat Al Mahmud</h4>
+            <span data-i18n="founderTitle">Founder & CEO</span>
           </div>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="mailto:doyoxgroup@gmail.com"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-        <div class="register-form">
-          <h3>Quick registration</h3>
-          <form id="registerForm">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <select required>
-              <option value="">Select Interest Area</option>
-              <option>Startup Support</option>
-              <option>Micro‑Business</option>
-              <option>Investment</option>
-              <option>Partnership</option>
-              <option>Ventures</option>
-            </select>
-            <button type="submit" class="btn btn-primary">Get Started Now <i class="fas fa-paper-plane"></i></button>
-          </form>
-          <p class="form-note">We'll connect you with the right team.</p>
         </div>
       </div>
     </div>
@@ -297,24 +178,54 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-brand">
-        <div class="footer-logo">DOYOX</div>
-        <p>© 2026 Doyox. All rights reserved.<br>Formerly known as Doyosoft.</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">DOYOX</div>
+          <p data-i18n="footerTagline">Empowering ideas, building futures.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="quickLinks">Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="ventures.html">Ventures</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="contact">Contact</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> doyoxgroup@gmail.com</li>
+            <li><i class="fas fa-phone"></i> +880 1581 483444</li>
+            <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="newsletter">Newsletter</h4>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#ventures">Ventures</a>
-        <a href="#what-we-do">What We Do</a>
-      </div>
-      <div class="footer-phrase">
-        <p>"Empowering ideas, building futures"<br>— A home for dreamers.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Doyox. <span data-i18n="rights">All rights reserved.</span> <span data-i18n="formerly">Formerly Doyosoft.</span></p>
+        <div class="legal-links">
+          <a href="#">Privacy</a> | <a href="#">Terms</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
+  <script src="lang.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
