@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Doyox – Join & Connect</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar"><!-- Same navigation, active on Contact --></nav>
+
+  <section class="page-header" style="background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('contact-bg.jpg');">
+    <div class="container">
+      <h1 data-aos="fade-up"><span data-i18n="contactTitle">Get in</span> <span class="highlight" data-i18n="contactHighlight">Touch</span></h1>
+      <p data-aos="fade-up" data-aos-delay="100" data-i18n="contactSubtitle">We'd love to hear from you</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <h3 data-i18n="contactDetails">Contact Details</h3>
+          <ul>
+            <li><i class="fas fa-envelope"></i> <strong data-i18n="generalInquiries">General:</strong> doyoxgroup@gmail.com</li>
+            <li><i class="fas fa-envelope"></i> <strong data-i18n="investment">Investment:</strong> muntasirdoyotec@gmail.com</li>
+            <li><i class="fas fa-phone"></i> <strong data-i18n="whatsapp">WhatsApp/Support:</strong> +880 1581 483444</li>
+            <li><i class="fas fa-phone"></i> <strong data-i18n="phoneHours">3PM–9PM:</strong> +880 1993 670283</li>
+            <li><i class="fas fa-map-marker-alt"></i> <strong data-i18n="addressLabel">Address:</strong> Dhaka, Bangladesh (by appointment)</li>
+            <li><i class="fas fa-clock"></i> <strong data-i18n="hoursLabel">Hours:</strong> Sun–Thu 10am–6pm (BST)</li>
+          </ul>
+        </div>
+        <div class="contact-form-container" data-aos="fade-left">
+          <h3 data-i18n="quickReg">Quick Registration</h3>
+          <!-- REPLACE YOUR_FORM_ID WITH ACTUAL FORMSPREE ID -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+            <input type="text" name="name" data-i18n-placeholder="fullName" placeholder="Full Name" required>
+            <input type="email" name="email" data-i18n-placeholder="emailAddress" placeholder="Email Address" required>
+            <select name="interest" required>
+              <option value="" data-i18n="selectInterest">Select Interest Area</option>
+              <option data-i18n="interestStartup">Startup Support</option>
+              <option data-i18n="interestMicro">Micro‑Business</option>
+              <option data-i18n="interestInvest">Investment</option>
+              <option data-i18n="interestPartner">Partnership</option>
+              <option data-i18n="interestVentures">Ventures</option>
+            </select>
+            <button type="submit" class="btn btn-primary" data-i18n="getStarted">Get Started Now <i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><!-- Same footer --></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="lang.js"></script>
+  <script src="script.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>
