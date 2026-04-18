@@ -41,7 +41,7 @@ const translations = {
     quickReg: "Quick Registration", fullName: "Full Name", emailAddress: "Email Address", selectInterest: "Select Interest Area",
     interestStartup: "Startup Support", interestMicro: "Micro‑Business", interestInvest: "Investment", interestPartner: "Partnership", interestVentures: "Ventures",
     getStarted: "Get Started Now",
-    footerTagline: "Empowering ideas, building futures.", quickLinks: "Quick Links", contactFooter: "Contact", newsletter: "Newsletter", yourEmail: "Your email",
+    footerTagline: "lead dreams, building futures.", quickLinks: "Quick Links", contactFooter: "Contact", newsletter: "Newsletter", yourEmail: "Your email",
     rights: "All rights reserved.", formerly: "Formerly Doyosoft.", privacy: "Privacy", terms: "Terms"
   },
   bn: {
@@ -86,7 +86,7 @@ const translations = {
     quickReg: "দ্রুত নিবন্ধন", fullName: "পূর্ণ নাম", emailAddress: "ইমেইল ঠিকানা", selectInterest: "আগ্রহের ক্ষেত্র নির্বাচন করুন",
     interestStartup: "স্টার্টআপ সাপোর্ট", interestMicro: "ক্ষুদ্র ব্যবসা", interestInvest: "বিনিয়োগ", interestPartner: "পার্টনারশিপ", interestVentures: "ভেঞ্চারসমূহ",
     getStarted: "এখনই শুরু করুন",
-    footerTagline: "ধারণাকে শক্তি দেওয়া, ভবিষ্যৎ গড়া।", quickLinks: "দ্রুত লিঙ্ক", contactFooter: "যোগাযোগ", newsletter: "নিউজলেটার", yourEmail: "আপনার ইমেইল",
+    footerTagline: "স্বপ্নকেে এগিয়ে দেওয়া, ভবিষ্যৎ গড়া।", quickLinks: "দ্রুত লিঙ্ক", contactFooter: "যোগাযোগ", newsletter: "নিউজলেটার", yourEmail: "আপনার ইমেইল",
     rights: "সর্বস্বত্ব সংরক্ষিত।", formerly: "পূর্বে ডয়োসফট নামে পরিচিত।", privacy: "গোপনীয়তা", terms: "শর্তাবলী"
   }
 };
