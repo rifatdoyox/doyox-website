@@ -1,7 +1,7 @@
 const translations = {
   en: {
     navHome: "Home", navAbout: "About", navVentures: "Ventures", navServices: "Services", navFounders: "Founders", navContact: "Contact",
-    badge: "Formerly Doyosoft · Rebranded 2024", heroTitle1: "Lead dreams,", heroTitle2: "building futures",
+    badge: "Formerly Doyosoft · Rebranded 2024", heroTitle1: "Building dreams,", heroTitle2: "building futures",
     heroSub: "A home for dreamers. Parent innovation company from Dhaka, Bangladesh.<br>45+ team · 150+ projects · 25k+ users.",
     joinBtn: "Join & Connect", discoverBtn: "Discover Doyox", successRate: "Success Rate", projects: "Projects", growth: "Monthly Growth",
     aboutTag: "Company Identity", aboutTitlePart1: "From Doyosoft to", aboutTitlePart2: "— a sharper, global identity",
@@ -41,12 +41,12 @@ const translations = {
     quickReg: "Quick Registration", fullName: "Full Name", emailAddress: "Email Address", selectInterest: "Select Interest Area",
     interestStartup: "Startup Support", interestMicro: "Micro‑Business", interestInvest: "Investment", interestPartner: "Partnership", interestVentures: "Ventures",
     getStarted: "Get Started Now",
-    footerTagline: "lead dreams, building futures.", quickLinks: "Quick Links", contactFooter: "Contact", newsletter: "Newsletter", yourEmail: "Your email",
+    footerTagline: "Building dreams, building futures.", quickLinks: "Quick Links", contactFooter: "Contact", newsletter: "Newsletter", yourEmail: "Your email",
     rights: "All rights reserved.", formerly: "Formerly Doyosoft.", privacy: "Privacy", terms: "Terms"
   },
   bn: {
     navHome: "হোম", navAbout: "সম্পর্কে", navVentures: "ভেঞ্চারসমূহ", navServices: "সেবাসমূহ", navFounders: "প্রতিষ্ঠাতা", navContact: "যোগাযোগ",
-    badge: "পূর্বে ডয়োসফট · ২০২৪ সালে রিব্র্যান্ডেড", heroTitle1: "স্বপ্নকেে এগিয়ে দেওয়া,", heroTitle2: "ভবিষ্যৎ গড়া",
+    badge: "পূর্বে ডয়োসফট · ২০২৪ সালে রিব্র্যান্ডেড", heroTitle1: "স্বপ্নকেে তৈরি করা,", heroTitle2: "ভবিষ্যৎ গড়া",
     heroSub: "স্বপ্নদ্রষ্টাদের জন্য একটি ঠিকানা। বাংলাদেশের ঢাকার মূল উদ্ভাবনী কোম্পানি।<br>৪৫+ দল · ১৫০+ প্রকল্প · ২৫ হাজার+ ব্যবহারকারী।",
     joinBtn: "যোগ দিন ও সংযুক্ত হোন", discoverBtn: "ডয়ক্স আবিষ্কার করুন", successRate: "সাফল্যের হার", projects: "প্রকল্প", growth: "মাসিক প্রবৃদ্ধি",
     aboutTag: "কোম্পানির পরিচয়", aboutTitlePart1: "ডয়োসফট থেকে", aboutTitlePart2: "— একটি তীক্ষ্ণ, বৈশ্বিক পরিচয়",
@@ -86,7 +86,7 @@ const translations = {
     quickReg: "দ্রুত নিবন্ধন", fullName: "পূর্ণ নাম", emailAddress: "ইমেইল ঠিকানা", selectInterest: "আগ্রহের ক্ষেত্র নির্বাচন করুন",
     interestStartup: "স্টার্টআপ সাপোর্ট", interestMicro: "ক্ষুদ্র ব্যবসা", interestInvest: "বিনিয়োগ", interestPartner: "পার্টনারশিপ", interestVentures: "ভেঞ্চারসমূহ",
     getStarted: "এখনই শুরু করুন",
-    footerTagline: "স্বপ্নকেে এগিয়ে দেওয়া, ভবিষ্যৎ গড়া।", quickLinks: "দ্রুত লিঙ্ক", contactFooter: "যোগাযোগ", newsletter: "নিউজলেটার", yourEmail: "আপনার ইমেইল",
+    footerTagline: "স্বপ্নকেে তৈরি করা, ভবিষ্যৎ গড়া।", quickLinks: "দ্রুত লিঙ্ক", contactFooter: "যোগাযোগ", newsletter: "নিউজলেটার", yourEmail: "আপনার ইমেইল",
     rights: "সর্বস্বত্ব সংরক্ষিত।", formerly: "পূর্বে ডয়োসফট নামে পরিচিত।", privacy: "গোপনীয়তা", terms: "শর্তাবলী"
   }
 };
