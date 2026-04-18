@@ -46,7 +46,7 @@ const translations = {
   },
   bn: {
     navHome: "হোম", navAbout: "সম্পর্কে", navVentures: "ভেঞ্চারসমূহ", navServices: "সেবাসমূহ", navFounders: "প্রতিষ্ঠাতা", navContact: "যোগাযোগ",
-    badge: "পূর্বে ডয়োসফট · ২০২৪ সালে রিব্র্যান্ডেড", heroTitle1: "স্বপ্নকেে তৈরি করা,", heroTitle2: "ভবিষ্যৎ গড়া",
+    badge: "পূর্বে ডয়োসফট · ২০২৪ সালে রিব্র্যান্ডেড", heroTitle1: "স্বপ্নকে তৈরি করা,", heroTitle2: "ভবিষ্যৎ গড়া",
     heroSub: "স্বপ্নদ্রষ্টাদের জন্য একটি ঠিকানা। বাংলাদেশের ঢাকার মূল উদ্ভাবনী কোম্পানি।<br>৪৫+ দল · ১৫০+ প্রকল্প · ২৫ হাজার+ ব্যবহারকারী।",
     joinBtn: "যোগ দিন ও সংযুক্ত হোন", discoverBtn: "ডয়ক্স আবিষ্কার করুন", successRate: "সাফল্যের হার", projects: "প্রকল্প", growth: "মাসিক প্রবৃদ্ধি",
     aboutTag: "কোম্পানির পরিচয়", aboutTitlePart1: "ডয়োসফট থেকে", aboutTitlePart2: "— একটি তীক্ষ্ণ, বৈশ্বিক পরিচয়",
@@ -86,7 +86,7 @@ const translations = {
     quickReg: "দ্রুত নিবন্ধন", fullName: "পূর্ণ নাম", emailAddress: "ইমেইল ঠিকানা", selectInterest: "আগ্রহের ক্ষেত্র নির্বাচন করুন",
     interestStartup: "স্টার্টআপ সাপোর্ট", interestMicro: "ক্ষুদ্র ব্যবসা", interestInvest: "বিনিয়োগ", interestPartner: "পার্টনারশিপ", interestVentures: "ভেঞ্চারসমূহ",
     getStarted: "এখনই শুরু করুন",
-    footerTagline: "স্বপ্নকেে তৈরি করা, ভবিষ্যৎ গড়া।", quickLinks: "দ্রুত লিঙ্ক", contactFooter: "যোগাযোগ", newsletter: "নিউজলেটার", yourEmail: "আপনার ইমেইল",
+    footerTagline: "স্বপ্নকে তৈরি করা, ভবিষ্যৎ গড়া।", quickLinks: "দ্রুত লিঙ্ক", contactFooter: "যোগাযোগ", newsletter: "নিউজলেটার", yourEmail: "আপনার ইমেইল",
     rights: "সর্বস্বত্ব সংরক্ষিত।", formerly: "পূর্বে ডয়োসফট নামে পরিচিত।", privacy: "গোপনীয়তা", terms: "শর্তাবলী"
   }
 };
