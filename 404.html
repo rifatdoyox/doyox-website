@@ -13,7 +13,7 @@
 
         body {
             background: linear-gradient(135deg, #0c0b1a 0%, #1e1b2f 100%);
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -22,73 +22,52 @@
         }
 
         .card {
-            max-width: 640px;
+            max-width: 560px;
             width: 100%;
-            background: rgba(20, 18, 38, 0.75);
+            background: rgba(20, 18, 38, 0.8);
             backdrop-filter: blur(16px);
             border-radius: 3rem;
-            padding: 2.5rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 107, 157, 0.2);
-            animation: borderPulse 5s infinite;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+            animation: borderGlow 5s infinite ease-in-out;
         }
 
-        @keyframes borderPulse {
-            0% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.3); }
-            33% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(74,222,128,0.4); }
-            66% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(192,132,252,0.4); }
-            100% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.3); }
+        @keyframes borderGlow {
+            0% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.4); }
+            33% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(74,222,128,0.5); }
+            66% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(192,132,252,0.5); }
+            100% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.4); }
         }
 
-        /* BIG SORRY (top) */
-        .sorry-header {
-            margin-bottom: 1rem;
-            animation: slideDown 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        .sorry-icon-big {
-            width: 70px;
-            height: 70px;
+        /* Emoji styling */
+        .sorry-emoji {
+            font-size: 6rem;
             display: inline-block;
-            filter: drop-shadow(0 0 8px #ff6b9d);
+            animation: floatEmoji 2s ease-in-out infinite;
+            filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.4));
         }
-        .sorry-text {
-            font-size: 3rem;
-            font-weight: 800;
+
+        @keyframes floatEmoji {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Big SORRY text */
+        .sorry-big {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
             background: linear-gradient(135deg, #ff6b9d, #c084fc, #4ade80);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.02em;
             text-transform: uppercase;
+            margin: 0.5rem 0 1rem;
         }
 
-        @keyframes slideDown {
-            0% { opacity: 0; transform: translateY(-40px) scale(0.9); }
-            70% { transform: translateY(5px); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* Animated character container */
-        .character {
-            margin: 1.5rem 0 1rem;
-            display: flex;
-            justify-content: center;
-        }
-
-        .character-svg {
-            width: 150px;
-            height: 150px;
-            animation: gentleFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes gentleFloat {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Message and countdown */
         h2 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -96,58 +75,44 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin: 0.8rem 0 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
-        .sub {
+        .subhead {
             color: #a5b4fc;
-            font-size: 0.85rem;
-            border-bottom: 1px dashed rgba(165,180,252,0.5);
+            font-size: 0.9rem;
+            border-bottom: 1px dashed rgba(165, 180, 252, 0.4);
             display: inline-block;
-            padding-bottom: 0.2rem;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1.8rem;
         }
 
-        .message-box {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(4px);
-            padding: 1rem 1.5rem;
+        .message {
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 2rem;
+            padding: 1.2rem 1.5rem;
             margin: 2rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-align: left;
-            border-left: 4px solid #4ade80;
-        }
-
-        .message-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: #4ade80;
-            stroke-width: 1.6;
-        }
-
-        .message-text {
             color: #e2e8ff;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            border-left: 3px solid #4ade80;
+            text-align: center;
         }
 
-        .countdown-panel {
+        .countdown {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 3rem;
-            padding: 1.2rem;
+            padding: 1rem 1.5rem;
             margin: 1.5rem 0;
-            display: flex;
+            display: inline-flex;
             align-items: baseline;
-            justify-content: center;
             gap: 0.8rem;
-            border: 1px solid rgba(192,132,252,0.5);
+            border: 1px solid rgba(192, 132, 252, 0.5);
         }
 
         .countdown-number {
             font-family: monospace;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #ff6b9d, #c084fc, #4ade80);
             background-clip: text;
@@ -157,13 +122,13 @@
 
         .countdown-label {
             color: #cbd5ff;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .redirect-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
             background: linear-gradient(95deg, #ff6b9d, #c084fc);
             padding: 0.75rem 2rem;
             border-radius: 3rem;
@@ -171,8 +136,9 @@
             text-decoration: none;
             font-weight: 600;
             transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(192, 132, 252, 0.4);
+            margin-top: 0.5rem;
             border: none;
-            box-shadow: 0 6px 14px rgba(192,132,252,0.4);
         }
 
         .redirect-btn:hover {
@@ -190,125 +156,48 @@
 <body>
 
 <div class="card">
-    <!-- BIG SORRY at top -->
-    <div class="sorry-header">
-        <svg class="sorry-icon-big" viewBox="0 0 24 24" fill="none" stroke="url(#gradSt)" stroke-width="1.3">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 8v4M12 16h.01" />
-            <path d="M8 9l2 2M16 9l-2 2" />
-        </svg>
-        <div class="sorry-text">SORRY</div>
-    </div>
-
-    <!-- Animated character SVG (sad, blinking, teardrop) -->
-    <div class="character">
-        <svg class="character-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ff6b9d" />
-                    <stop offset="100%" stop-color="#c084fc" />
-                </linearGradient>
-                <linearGradient id="tearGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#4ade80" />
-                    <stop offset="100%" stop-color="#a5f0c0" />
-                </linearGradient>
-            </defs>
-            <!-- Head -->
-            <circle cx="100" cy="90" r="45" fill="url(#bodyGrad)" opacity="0.9" />
-            <!-- Eyes (blinking animation via CSS) -->
-            <g>
-                <ellipse cx="80" cy="85" rx="6" ry="9" fill="#1a1a2e" class="eye-left">
-                    <animate attributeName="ry" values="9;9;1;9;9;9" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
-                </ellipse>
-                <ellipse cx="120" cy="85" rx="6" ry="9" fill="#1a1a2e" class="eye-right">
-                    <animate attributeName="ry" values="9;9;1;9;9;9" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
-                </ellipse>
-            </g>
-            <!-- Pupils (small dots) -->
-            <circle cx="80" cy="87" r="3" fill="white">
-                <animate attributeName="cy" values="87;87;85;87;87;87" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
-            </circle>
-            <circle cx="120" cy="87" r="3" fill="white">
-                <animate attributeName="cy" values="87;87;85;87;87;87" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
-            </circle>
-            <!-- Sad mouth -->
-            <path d="M85 110 Q100 100 115 110" stroke="#1a1a2e" stroke-width="3" fill="none" stroke-linecap="round" />
-            <!-- Teardrop (animated fall and fade) -->
-            <g>
-                <path d="M68 98 Q64 108 68 112 Q72 108 68 98Z" fill="url(#tearGrad)" opacity="0">
-                    <animate attributeName="opacity" values="0;0;1;1;0;0" dur="3s" repeatCount="indefinite" keyTimes="0;0.2;0.3;0.7;0.8;1" />
-                    <animateTransform attributeName="transform" type="translate" values="0 0; 0 0; 0 5; 0 20; 0 20; 0 0" dur="3s" repeatCount="indefinite" keyTimes="0;0.2;0.3;0.7;0.8;1" />
-                </path>
-            </g>
-            <!-- Waving hand (right) -->
-            <g>
-                <animateTransform attributeName="transform" type="rotate" values="-5 150 100; 10 150 100; -5 150 100" dur="1.2s" repeatCount="indefinite" />
-                <circle cx="150" cy="100" r="12" fill="#ff6b9d" />
-                <path d="M155 95 L165 85 M158 102 L170 100 M155 108 L162 115" stroke="#ff6b9d" stroke-width="3" stroke-linecap="round" />
-            </g>
-        </svg>
-    </div>
+    <!-- Only emoji + big SORRY text -->
+    <div class="sorry-emoji">😔</div>
+    <div class="sorry-big">SORRY</div>
 
     <h2>Service temporarily off</h2>
-    <div class="sub">doyox · maintenance window</div>
+    <div class="subhead">doyox · maintenance window</div>
 
-    <!-- Iconic message -->
-    <div class="message-box">
-        <div class="message-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <path d="M20 12v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4M12 2v8M9 7l3 3 3-3" />
-                <circle cx="12" cy="18" r="2" />
-                <line x1="12" y1="14" x2="12" y2="12" />
-            </svg>
-        </div>
-        <div class="message-text">
-            Be connected with doyox. <br>Thank you for your patience.
-        </div>
+    <div class="message">
+        Be connected with doyox.<br>Thank you for your patience.
     </div>
 
     <!-- Countdown -->
-    <div class="countdown-panel">
-        <span class="countdown-number" id="cntdown">10</span>
+    <div class="countdown">
+        <span class="countdown-number" id="countdownTimer">10</span>
         <span class="countdown-label">seconds</span>
-        <span style="color: #c084fc;">⟳ redirecting</span>
+        <span style="color: #c084fc;">→</span>
     </div>
 
     <a href="/" class="redirect-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-        </svg>
-        Homepage
+        <span>Homepage</span>
     </a>
     <div class="footnote">
-        Auto redirect in <span id="footSec" style="font-weight:bold; color:#ff9fbb;">10</span> seconds
+        Automatic redirect in <span id="footnoteSeconds" style="font-weight:bold; color:#ff9fbb;">10</span> seconds
     </div>
 </div>
 
-<svg width="0" height="0" style="position:absolute;">
-    <defs>
-        <linearGradient id="gradSt" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ff6b9d" />
-            <stop offset="100%" stop-color="#c084fc" />
-        </linearGradient>
-    </defs>
-</svg>
-
 <script>
     let seconds = 10;
-    const display = document.getElementById('cntdown');
-    const footSpan = document.getElementById('footSec');
-    function tick() {
-        display.innerText = seconds;
-        footSpan.innerText = seconds;
+    const timerEl = document.getElementById('countdownTimer');
+    const footEl = document.getElementById('footnoteSeconds');
+
+    function update() {
+        timerEl.innerText = seconds;
+        footEl.innerText = seconds;
         if (seconds === 0) {
             window.location.href = '/';
         } else {
             seconds--;
-            setTimeout(tick, 1000);
+            setTimeout(update, 1000);
         }
     }
-    tick();
+    update();
 </script>
 </body>
 </html>
