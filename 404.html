@@ -22,7 +22,7 @@
         }
 
         .card {
-            max-width: 560px;
+            max-width: 580px;
             width: 100%;
             background: rgba(20, 18, 38, 0.8);
             backdrop-filter: blur(16px);
@@ -41,23 +41,9 @@
             100% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.4); }
         }
 
-        /* Emoji styling */
-        .sorry-emoji {
-            font-size: 6rem;
-            display: inline-block;
-            animation: floatEmoji 2s ease-in-out infinite;
-            filter: drop-shadow(0 8px 20px rgba(255, 107, 157, 0.4));
-        }
-
-        @keyframes floatEmoji {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Big SORRY text */
+        /* HUGE SORRY text */
         .sorry-big {
-            font-size: 4.5rem;
+            font-size: 6rem;
             font-weight: 900;
             letter-spacing: -0.02em;
             background: linear-gradient(135deg, #ff6b9d, #c084fc, #4ade80);
@@ -65,7 +51,8 @@
             -webkit-background-clip: text;
             color: transparent;
             text-transform: uppercase;
-            margin: 0.5rem 0 1rem;
+            margin: 0 0 1.2rem 0;
+            line-height: 1.1;
         }
 
         h2 {
@@ -156,8 +143,7 @@
 <body>
 
 <div class="card">
-    <!-- Only emoji + big SORRY text -->
-    <div class="sorry-emoji">😔</div>
+    <!-- Only big SORRY text - no emoji, no icons -->
     <div class="sorry-big">SORRY</div>
 
     <h2>Service temporarily off</h2>
@@ -167,7 +153,7 @@
         Be connected with doyox.<br>Thank you for your patience.
     </div>
 
-    <!-- Countdown -->
+    <!-- Countdown display -->
     <div class="countdown">
         <span class="countdown-number" id="countdownTimer">10</span>
         <span class="countdown-label">seconds</span>
