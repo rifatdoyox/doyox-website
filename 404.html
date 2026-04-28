@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service temporarily off – doyox</title>
+    <title>Service off – doyox</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +12,8 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0b0c1a 0%, #1a1a2e 100%);
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0c0b1a 0%, #1e1b2f 100%);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -21,130 +21,103 @@
             padding: 1.5rem;
         }
 
-        /* Main card with glassmorphism and rainbow border */
         .card {
-            max-width: 620px;
+            max-width: 640px;
             width: 100%;
-            background: rgba(18, 20, 35, 0.75);
+            background: rgba(20, 18, 38, 0.75);
             backdrop-filter: blur(16px);
             border-radius: 3rem;
             padding: 2.5rem 2rem;
             text-align: center;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
-            animation: borderGlow 4s ease-in-out infinite;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 107, 157, 0.2);
+            animation: borderPulse 5s infinite;
         }
 
-        @keyframes borderGlow {
-            0% { box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 107, 157, 0.3); }
-            33% { box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(120, 220, 120, 0.4); }
-            66% { box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(170, 100, 255, 0.4); }
-            100% { box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(255, 107, 157, 0.3); }
+        @keyframes borderPulse {
+            0% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.3); }
+            33% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(74,222,128,0.4); }
+            66% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 2px rgba(192,132,252,0.4); }
+            100% { box-shadow: 0 30px 50px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,107,157,0.3); }
         }
 
-        /* BIG SORRY ANIMATION (Top) */
-        .sorry-big {
-            margin-bottom: 1.5rem;
-            animation: floatBounce 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards, glowPulse 3s infinite;
+        /* BIG SORRY (top) */
+        .sorry-header {
+            margin-bottom: 1rem;
+            animation: slideDown 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-
-        .sorry-big svg {
-            width: 80px;
-            height: 80px;
-            filter: drop-shadow(0 8px 20px rgba(255, 70, 150, 0.4));
+        .sorry-icon-big {
+            width: 70px;
+            height: 70px;
+            display: inline-block;
+            filter: drop-shadow(0 0 8px #ff6b9d);
         }
-
         .sorry-text {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 800;
             background: linear-gradient(135deg, #ff6b9d, #c084fc, #4ade80);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
             letter-spacing: -0.02em;
-            margin-top: 0.5rem;
             text-transform: uppercase;
         }
 
-        @keyframes floatBounce {
-            0% { opacity: 0; transform: translateY(-30px) scale(0.9); }
-            60% { transform: translateY(8px) scale(1.02); }
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-40px) scale(0.9); }
+            70% { transform: translateY(5px); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        @keyframes glowPulse {
-            0% { filter: drop-shadow(0 0 2px rgba(255, 107, 157, 0.5)); }
-            50% { filter: drop-shadow(0 0 18px rgba(192, 132, 252, 0.8)); }
-            100% { filter: drop-shadow(0 0 2px rgba(74, 222, 128, 0.5)); }
-        }
-
-        /* Animated icon circle */
-        .icon-ring {
-            background: linear-gradient(145deg, #2a2a40, #1e1e30);
-            width: 85px;
-            height: 85px;
-            border-radius: 50%;
+        /* Animated character container */
+        .character {
+            margin: 1.5rem 0 1rem;
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem auto;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            animation: spinGlow 8s linear infinite;
         }
 
-        @keyframes spinGlow {
-            0% { background: linear-gradient(145deg, #2a2a40, #1e1e30); }
-            25% { background: linear-gradient(145deg, #3a2a50, #2a1e40); }
-            50% { background: linear-gradient(145deg, #2a4030, #1e3022); }
-            75% { background: linear-gradient(145deg, #402a4a, #301e38); }
-            100% { background: linear-gradient(145deg, #2a2a40, #1e1e30); }
+        .character-svg {
+            width: 150px;
+            height: 150px;
+            animation: gentleFloat 3s ease-in-out infinite;
         }
 
-        .main-icon {
-            width: 44px;
-            height: 44px;
-            stroke: url(#gradStroke);
-            stroke-width: 1.5;
-            fill: none;
+        @keyframes gentleFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* Headings */
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
+        /* Message and countdown */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
             background: linear-gradient(135deg, #f0f3fa, #cddcff);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 0.3rem;
+            margin: 0.8rem 0 0.2rem;
         }
 
-        .subhead {
+        .sub {
             color: #a5b4fc;
-            font-size: 0.9rem;
-            border-bottom: 1px dashed rgba(165, 180, 252, 0.4);
+            font-size: 0.85rem;
+            border-bottom: 1px dashed rgba(165,180,252,0.5);
             display: inline-block;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1.8rem;
+            padding-bottom: 0.2rem;
         }
 
-        /* Message box with gradient border */
-        .message {
-            background: rgba(255, 255, 255, 0.06);
+        .message-box {
+            background: rgba(255,255,255,0.05);
             backdrop-filter: blur(4px);
             padding: 1rem 1.5rem;
-            border-radius: 1.8rem;
-            color: #e2e8ff;
-            font-weight: 500;
-            margin: 1.8rem 0;
-            font-size: 1rem;
+            border-radius: 2rem;
+            margin: 2rem 0;
             display: flex;
             align-items: center;
             gap: 1rem;
             text-align: left;
-            border: 1px solid rgba(120, 220, 120, 0.3);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid #4ade80;
         }
 
         .message-icon svg {
@@ -154,57 +127,56 @@
             stroke-width: 1.6;
         }
 
-        /* Countdown panel with neon effect */
+        .message-text {
+            color: #e2e8ff;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
         .countdown-panel {
             background: rgba(0, 0, 0, 0.4);
             border-radius: 3rem;
-            padding: 1.25rem;
-            margin: 1.8rem 0;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
             display: flex;
             align-items: baseline;
             justify-content: center;
             gap: 0.8rem;
-            flex-wrap: wrap;
-            font-weight: 600;
-            border: 1px solid rgba(255, 107, 157, 0.5);
-            backdrop-filter: blur(8px);
+            border: 1px solid rgba(192,132,252,0.5);
         }
 
         .countdown-number {
-            font-family: 'SF Mono', 'JetBrains Mono', monospace;
-            font-size: 4rem;
+            font-family: monospace;
+            font-size: 3.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, #ff6b9d, #c084fc, #4ade80);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            line-height: 1;
-            text-shadow: 0 0 8px rgba(255, 107, 157, 0.4);
         }
 
-        .countdown-unit {
-            font-size: 1.2rem;
+        .countdown-label {
             color: #cbd5ff;
+            font-size: 1.1rem;
         }
 
-        .redirect-button {
+        .redirect-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
             background: linear-gradient(95deg, #ff6b9d, #c084fc);
+            padding: 0.75rem 2rem;
+            border-radius: 3rem;
             color: white;
             text-decoration: none;
-            padding: 0.8rem 2rem;
-            border-radius: 3rem;
             font-weight: 600;
-            transition: all 0.25s ease;
+            transition: 0.2s;
             border: none;
-            box-shadow: 0 6px 14px rgba(192, 132, 252, 0.3);
+            box-shadow: 0 6px 14px rgba(192,132,252,0.4);
         }
 
-        .redirect-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 22px rgba(255, 107, 157, 0.4);
+        .redirect-btn:hover {
+            transform: scale(1.02);
             background: linear-gradient(95deg, #ff80ab, #d19cff);
         }
 
@@ -213,52 +185,75 @@
             color: #7e8aae;
             margin-top: 2rem;
         }
-
-        /* gradient definition for stroke */
-        svg defs linearGradient {
-            --webkit-gradient: ;
-        }
     </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute;">
-    <defs>
-        <linearGradient id="gradStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ff6b9d" />
-            <stop offset="50%" stop-color="#c084fc" />
-            <stop offset="100%" stop-color="#4ade80" />
-        </linearGradient>
-    </defs>
-</svg>
-
 <div class="card">
-    <!-- BIG SORRY at the very top (icon + word) -->
-    <div class="sorry-big">
-        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="url(#gradStroke)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- BIG SORRY at top -->
+    <div class="sorry-header">
+        <svg class="sorry-icon-big" viewBox="0 0 24 24" fill="none" stroke="url(#gradSt)" stroke-width="1.3">
             <circle cx="12" cy="12" r="10" />
-            <path d="M12 8v4" />
-            <path d="M12 16h.01" />
-            <path d="M8 8 L10 10" />
-            <path d="M16 8 L14 10" />
+            <path d="M12 8v4M12 16h.01" />
+            <path d="M8 9l2 2M16 9l-2 2" />
         </svg>
         <div class="sorry-text">SORRY</div>
     </div>
 
-    <!-- Animated icon ring -->
-    <div class="icon-ring">
-        <svg class="main-icon" viewBox="0 0 24 24" stroke="url(#gradStroke)" fill="none">
-            <rect x="2" y="4" width="20" height="16" rx="2" stroke="url(#gradStroke)" />
-            <line x1="8" y1="12" x2="16" y2="12" stroke="url(#gradStroke)" />
-            <line x1="12" y1="8" x2="12" y2="16" stroke="url(#gradStroke)" />
+    <!-- Animated character SVG (sad, blinking, teardrop) -->
+    <div class="character">
+        <svg class="character-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff6b9d" />
+                    <stop offset="100%" stop-color="#c084fc" />
+                </linearGradient>
+                <linearGradient id="tearGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#4ade80" />
+                    <stop offset="100%" stop-color="#a5f0c0" />
+                </linearGradient>
+            </defs>
+            <!-- Head -->
+            <circle cx="100" cy="90" r="45" fill="url(#bodyGrad)" opacity="0.9" />
+            <!-- Eyes (blinking animation via CSS) -->
+            <g>
+                <ellipse cx="80" cy="85" rx="6" ry="9" fill="#1a1a2e" class="eye-left">
+                    <animate attributeName="ry" values="9;9;1;9;9;9" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
+                </ellipse>
+                <ellipse cx="120" cy="85" rx="6" ry="9" fill="#1a1a2e" class="eye-right">
+                    <animate attributeName="ry" values="9;9;1;9;9;9" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
+                </ellipse>
+            </g>
+            <!-- Pupils (small dots) -->
+            <circle cx="80" cy="87" r="3" fill="white">
+                <animate attributeName="cy" values="87;87;85;87;87;87" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
+            </circle>
+            <circle cx="120" cy="87" r="3" fill="white">
+                <animate attributeName="cy" values="87;87;85;87;87;87" dur="4s" repeatCount="indefinite" keyTimes="0;0.45;0.5;0.55;0.95;1" />
+            </circle>
+            <!-- Sad mouth -->
+            <path d="M85 110 Q100 100 115 110" stroke="#1a1a2e" stroke-width="3" fill="none" stroke-linecap="round" />
+            <!-- Teardrop (animated fall and fade) -->
+            <g>
+                <path d="M68 98 Q64 108 68 112 Q72 108 68 98Z" fill="url(#tearGrad)" opacity="0">
+                    <animate attributeName="opacity" values="0;0;1;1;0;0" dur="3s" repeatCount="indefinite" keyTimes="0;0.2;0.3;0.7;0.8;1" />
+                    <animateTransform attributeName="transform" type="translate" values="0 0; 0 0; 0 5; 0 20; 0 20; 0 0" dur="3s" repeatCount="indefinite" keyTimes="0;0.2;0.3;0.7;0.8;1" />
+                </path>
+            </g>
+            <!-- Waving hand (right) -->
+            <g>
+                <animateTransform attributeName="transform" type="rotate" values="-5 150 100; 10 150 100; -5 150 100" dur="1.2s" repeatCount="indefinite" />
+                <circle cx="150" cy="100" r="12" fill="#ff6b9d" />
+                <path d="M155 95 L165 85 M158 102 L170 100 M155 108 L162 115" stroke="#ff6b9d" stroke-width="3" stroke-linecap="round" />
+            </g>
         </svg>
     </div>
 
-    <h1>Service temporarily off</h1>
-    <div class="subhead">doyox · scheduled maintenance</div>
+    <h2>Service temporarily off</h2>
+    <div class="sub">doyox · maintenance window</div>
 
-    <!-- Message with icon (connection / thank you) -->
-    <div class="message">
+    <!-- Iconic message -->
+    <div class="message-box">
         <div class="message-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M20 12v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4M12 2v8M9 7l3 3 3-3" />
@@ -266,64 +261,54 @@
                 <line x1="12" y1="14" x2="12" y2="12" />
             </svg>
         </div>
-        <span>Be connected with doyox. Thank you for your patience.</span>
+        <div class="message-text">
+            Be connected with doyox. <br>Thank you for your patience.
+        </div>
     </div>
 
-    <!-- Countdown display with live timer -->
+    <!-- Countdown -->
     <div class="countdown-panel">
-        <span class="countdown-number" id="countdownSeconds">10</span>
-        <span class="countdown-unit">seconds</span>
-        <span style="color:#b9c3f0;">→ redirecting</span>
+        <span class="countdown-number" id="cntdown">10</span>
+        <span class="countdown-label">seconds</span>
+        <span style="color: #c084fc;">⟳ redirecting</span>
     </div>
 
-    <a href="/" class="redirect-button">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+    <a href="/" class="redirect-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
         </svg>
-        Go to homepage
+        Homepage
     </a>
     <div class="footnote">
-        Auto redirect in <span id="footnoteSeconds" style="font-weight:600; color:#ff9fbb;">10</span> seconds
+        Auto redirect in <span id="footSec" style="font-weight:bold; color:#ff9fbb;">10</span> seconds
     </div>
 </div>
 
+<svg width="0" height="0" style="position:absolute;">
+    <defs>
+        <linearGradient id="gradSt" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff6b9d" />
+            <stop offset="100%" stop-color="#c084fc" />
+        </linearGradient>
+    </defs>
+</svg>
+
 <script>
-    (function() {
-        let seconds = 10;
-        const countEl = document.getElementById('countdownSeconds');
-        const footnoteSpan = document.getElementById('footnoteSeconds');
-        const redirectUrl = '/';   // homepage
-
-        function updateDisplay() {
-            if (countEl) countEl.innerText = seconds;
-            if (footnoteSpan) footnoteSpan.innerText = seconds;
+    let seconds = 10;
+    const display = document.getElementById('cntdown');
+    const footSpan = document.getElementById('footSec');
+    function tick() {
+        display.innerText = seconds;
+        footSpan.innerText = seconds;
+        if (seconds === 0) {
+            window.location.href = '/';
+        } else {
+            seconds--;
+            setTimeout(tick, 1000);
         }
-
-        function redirectNow() {
-            window.location.href = redirectUrl;
-        }
-
-        const interval = setInterval(() => {
-            if (seconds <= 1) {
-                clearInterval(interval);
-                redirectNow();
-            } else {
-                seconds--;
-                updateDisplay();
-            }
-        }, 1000);
-
-        // fallback safety
-        setTimeout(() => {
-            if (seconds > 0) {
-                clearInterval(interval);
-                redirectNow();
-            }
-        }, 11000);
-
-        updateDisplay();
-    })();
+    }
+    tick();
 </script>
 </body>
 </html>
