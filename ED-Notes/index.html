@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ED Notes – Under Maintenance</title>
-  <!-- Geometric digital font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -17,7 +16,7 @@
 
     body {
       background: #f8fafc;
-      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -30,34 +29,33 @@
       text-align: center;
       position: relative;
       z-index: 2;
-      max-width: 900px;
+      max-width: 1000px;
       width: 100%;
-      padding: 2rem 1rem;
+      padding: 2rem 1.5rem;
     }
 
-    /* Big ED Notes title */
+    /* Title */
     .title {
-      font-size: clamp(3.2rem, 10vw, 5rem);
-      font-weight: 800;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e293b, #3b82f6);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 0.4rem;
+      color: transparent;
+      margin-bottom: 0.3rem;
     }
 
     .subtitle {
-      font-size: 1rem;
-      letter-spacing: 4px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: #475569;
-      margin-bottom: 2.5rem;
+      color: #64748b;
       font-weight: 500;
+      margin-bottom: 2rem;
     }
 
-    /* Main showcase: robot + console side by side / stacked */
+    /* Showcase */
     .showcase {
       display: flex;
       align-items: center;
@@ -65,54 +63,49 @@
       gap: 2rem;
       flex-wrap: wrap;
       margin: 2rem auto;
-      max-width: 800px;
     }
 
-    /* Robot area */
     .robot-area {
-      position: relative;
       width: 220px;
       height: 260px;
       flex-shrink: 0;
     }
 
-    /* Console / terminal window */
     .console {
-      background: #1e293b;
-      border-radius: 8px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      width: 360px;
+      background: #0f172a;
+      border-radius: 12px;
+      width: 380px;
       max-width: 100%;
-      font-family: 'Courier New', monospace;
+      font-family: 'SF Mono', 'Fira Code', monospace;
       text-align: left;
       overflow: hidden;
-      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
     }
 
     .console-header {
-      background: #f1f5f9;
-      padding: 8px 12px;
+      background: #1e293b;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       gap: 8px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #334155;
     }
 
     .console-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #cbd5e1;
+      background: #475569;
     }
-    .console-dot:nth-child(1) { background: #f87171; }
-    .console-dot:nth-child(2) { background: #facc15; }
-    .console-dot:nth-child(3) { background: #4ade80; }
+    .console-dot:nth-child(1) { background: #ef4444; }
+    .console-dot:nth-child(2) { background: #eab308; }
+    .console-dot:nth-child(3) { background: #22c55e; }
 
     .console-title {
       margin-left: auto;
       font-size: 0.7rem;
-      color: #64748b;
-      letter-spacing: 0.5px;
+      color: #94a3b8;
+      font-family: 'Inter', sans-serif;
     }
 
     .console-body {
@@ -120,31 +113,12 @@
       height: 200px;
       overflow-y: auto;
       background: #0f172a;
-      color: #4ade80;
-      font-size: 0.8rem;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      word-break: break-all;
+      color: #a5f3c3;
+      font-size: 0.75rem;
+      line-height: 1.5;
     }
 
-    .console-body .line {
-      opacity: 0.9;
-    }
-    .cursor-line {
-      display: inline-block;
-      width: 8px;
-      height: 1rem;
-      background: #4ade80;
-      animation: cursorBlink 0.8s infinite;
-      vertical-align: middle;
-      margin-left: 2px;
-    }
-    @keyframes cursorBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* Countdown panel */
+    /* Professional Countdown Section */
     .countdown-section {
       margin-top: 2.5rem;
       display: flex;
@@ -153,56 +127,48 @@
     }
 
     .countdown-label {
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-weight: 500;
       color: #475569;
-      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
       margin-bottom: 0.75rem;
     }
 
-    .countdown-display {
-      background: #0b1120;
-      border: 2px solid #4ade80;
-      border-radius: 12px;
-      padding: 0.8rem 2.2rem 0.6rem;
+    .countdown-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 0.5rem 1.8rem;
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 0 20px rgba(74, 222, 128, 0.2), inset 0 0 12px rgba(74, 222, 128, 0.1);
-      margin-bottom: 1.5rem;
-      position: relative;
+      align-items: baseline;
+      gap: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: all 0.2s;
     }
 
     .countdown-number {
-      font-family: 'Orbitron', monospace;
-      font-size: clamp(4rem, 12vw, 6rem);
-      font-weight: 900;
-      color: #4ade80;
-      text-shadow: 0 0 20px #22c55e, 0 0 45px #10b981;
-      letter-spacing: 2px;
-      line-height: 1;
-      transition: transform 0.2s ease;
-      min-width: 1.2em;
+      font-size: 3rem;
+      font-weight: 600;
+      font-family: 'Inter', monospace;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      min-width: 2.2rem;
       text-align: center;
     }
 
-    .countdown-number.pulse {
-      animation: numberPulse 0.4s ease-out;
-    }
-
-    @keyframes numberPulse {
-      0% { transform: scale(1.15); text-shadow: 0 0 30px #4ade80, 0 0 60px #10b981; }
-      100% { transform: scale(1); text-shadow: 0 0 20px #22c55e, 0 0 45px #10b981; }
-    }
-
     .countdown-unit {
-      font-family: 'Orbitron', monospace;
-      font-size: 1.3rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      color: #4ade80;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      opacity: 0.8;
+      color: #64748b;
+      text-transform: lowercase;
+    }
+
+    .redirect-hint {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      margin-top: 0.75rem;
     }
 
     /* Button */
@@ -210,52 +176,36 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 32px;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+      padding: 12px 28px;
+      font-size: 0.9rem;
+      font-weight: 500;
       text-decoration: none;
-      color: #1e293b;
-      background: #ffffff;
-      border: 2px solid #2563eb;
-      border-radius: 50px;
-      transition: all 0.25s ease;
-      margin-top: 0.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      cursor: pointer;
+      color: #ffffff;
+      background: #1e293b;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+      margin-top: 1.5rem;
+      border: 1px solid #334155;
     }
 
     .btn:hover {
-      background: #2563eb;
-      color: #ffffff;
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+      background: #0f172a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .btn:hover .arrow-icon {
-      color: #ffffff;
-    }
-
-    .arrow-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #2563eb;
-      transition: transform 0.25s ease, color 0.25s ease;
-    }
-
-    .btn:hover .arrow-icon {
-      transform: translateX(-4px);
+    .arrow-icon svg {
+      stroke: #ffffff;
     }
 
     .footer-note {
       margin-top: 3rem;
-      font-size: 0.75rem;
-      opacity: 0.6;
-      letter-spacing: 2px;
+      font-size: 0.7rem;
       color: #94a3b8;
+      letter-spacing: 0.5px;
     }
 
-    /* Background geometry */
+    /* Background geometric shapes (subtle) */
     .bg-geo {
       position: fixed;
       top: 0;
@@ -267,19 +217,18 @@
       overflow: hidden;
     }
 
-    /* ROBOT SVG ANIMATIONS */
+    /* Robot animations */
     .arm-group {
       transform-origin: var(--origin);
       animation: var(--anim-name) 1.2s infinite alternate ease-in-out;
-      animation-delay: var(--delay, 0s);
     }
     @keyframes leftArm {
-      0% { transform: rotate(8deg); }
-      100% { transform: rotate(-6deg); }
+      0% { transform: rotate(6deg); }
+      100% { transform: rotate(-4deg); }
     }
     @keyframes rightArm {
-      0% { transform: rotate(-8deg); }
-      100% { transform: rotate(6deg); }
+      0% { transform: rotate(-6deg); }
+      100% { transform: rotate(4deg); }
     }
     .robot-eye {
       animation: blink 4s infinite;
@@ -288,80 +237,51 @@
       0%, 90%, 100% { transform: scaleY(1); }
       95% { transform: scaleY(0.1); }
     }
-    .antenna-tip {
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      0% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
   </style>
 </head>
 <body>
-  <!-- Animated background geometric particles -->
   <div class="bg-geo" id="bg-geo"></div>
 
   <div class="container">
     <h1 class="title">ED Notes</h1>
     <p class="subtitle">Site Maintenance in Progress</p>
 
-    <!-- Showcase: Robot + Console -->
     <div class="showcase">
-      <!-- Robot -->
+      <!-- Robot SVG -->
       <div class="robot-area">
         <svg width="100%" height="100%" viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
-          <!-- Desk base -->
-          <rect x="30" y="210" width="160" height="12" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
-          <rect x="40" y="200" width="140" height="12" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
-
-          <!-- Robot legs -->
-          <rect x="75" y="190" width="14" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
-          <rect x="131" y="190" width="14" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
-
-          <!-- Body -->
-          <rect x="72" y="130" width="76" height="65" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2.5"/>
-          <rect x="86" y="146" width="48" height="28" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
-          <circle cx="110" cy="160" r="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="1">
-            <animate attributeName="r" values="6;8;6" dur="1.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="1;0.6;1" dur="1.5s" repeatCount="indefinite"/>
+          <rect x="30" y="210" width="160" height="12" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect x="40" y="200" width="140" height="12" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect x="75" y="190" width="14" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
+          <rect x="131" y="190" width="14" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
+          <rect x="72" y="130" width="76" height="65" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="86" y="146" width="48" height="28" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+          <circle cx="110" cy="160" r="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1">
+            <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-
-          <!-- Neck -->
-          <rect x="96" y="116" width="28" height="15" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
-
-          <!-- Head (monitor shape) -->
-          <rect x="80" y="60" width="60" height="50" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2.5"/>
+          <rect x="96" y="116" width="28" height="15" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect x="80" y="60" width="60" height="50" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
           <rect x="86" y="66" width="48" height="30" rx="4" fill="#1e293b"/>
-          <ellipse class="robot-eye" cx="95" cy="78" rx="4" ry="5" fill="#4ade80"/>
-          <ellipse class="robot-eye" cx="125" cy="78" rx="4" ry="5" fill="#4ade80"/>
-          <line x1="98" y1="90" x2="122" y2="90" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
-
-          <!-- Antenna -->
-          <line x1="110" y1="60" x2="110" y2="42" stroke="#7c3aed" stroke-width="3" stroke-linecap="round"/>
-          <circle class="antenna-tip" cx="110" cy="36" r="6" fill="#7c3aed" opacity="0.8"/>
-
-          <!-- Left arm -->
-          <g class="arm-group" style="--origin: 74px 138px; --anim-name: leftArm; --delay: 0s;">
-            <rect x="64" y="138" width="16" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
-            <rect x="62" y="185" width="12" height="35" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
-            <circle cx="68" cy="220" r="6" fill="#94a3b8"/>
-            <rect x="66" y="215" width="4" height="8" rx="1" fill="#64748b"/>
+          <ellipse class="robot-eye" cx="95" cy="78" rx="3.5" ry="4.5" fill="#4ade80"/>
+          <ellipse class="robot-eye" cx="125" cy="78" rx="3.5" ry="4.5" fill="#4ade80"/>
+          <line x1="98" y1="90" x2="122" y2="90" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="110" y1="60" x2="110" y2="42" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="110" cy="36" r="5" fill="#7c3aed" opacity="0.8"/>
+          <g class="arm-group" style="--origin: 74px 138px; --anim-name: leftArm;">
+            <rect x="64" y="138" width="16" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.2"/>
+            <rect x="62" y="185" width="12" height="35" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
+            <circle cx="68" cy="220" r="5" fill="#94a3b8"/>
           </g>
-
-          <!-- Right arm -->
-          <g class="arm-group" style="--origin: 130px 138px; --anim-name: rightArm; --delay: 0.3s;">
-            <rect x="140" y="138" width="16" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
-            <rect x="146" y="185" width="12" height="35" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
-            <circle cx="152" cy="220" r="6" fill="#94a3b8"/>
-            <rect x="150" y="215" width="4" height="8" rx="1" fill="#64748b"/>
+          <g class="arm-group" style="--origin: 130px 138px; --anim-name: rightArm;">
+            <rect x="140" y="138" width="16" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.2"/>
+            <rect x="146" y="185" width="12" height="35" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
+            <circle cx="152" cy="220" r="5" fill="#94a3b8"/>
           </g>
-
-          <!-- Keyboard -->
-          <rect x="80" y="218" width="60" height="8" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+          <rect x="80" y="218" width="60" height="6" rx="2" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
         </svg>
       </div>
 
-      <!-- Coding Console -->
+      <!-- Console -->
       <div class="console">
         <div class="console-header">
           <span class="console-dot"></span>
@@ -375,22 +295,22 @@
       </div>
     </div>
 
-    <!-- Countdown to homepage -->
+    <!-- COUNTDOWN: clean & professional -->
     <div class="countdown-section">
-      <div class="countdown-label">Returning to doyox.com in</div>
-      <div class="countdown-display">
+      <div class="countdown-label">Returning to doyox.com</div>
+      <div class="countdown-card">
         <span class="countdown-number" id="countdown-number">30</span>
-        <span class="countdown-unit">sec</span>
+        <span class="countdown-unit">seconds</span>
       </div>
-      <!-- Button with animated arrow -->
+      <div class="redirect-hint">You'll be automatically redirected</div>
       <a href="/" class="btn">
         <span class="arrow-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
         </span>
-        Return to Homepage Now
+        Go to homepage now
       </a>
     </div>
 
@@ -398,132 +318,92 @@
   </div>
 
   <script>
-    // ========== GEOMETRIC BACKGROUND PARTICLES ==========
+    // Background geometric elements
     const bgContainer = document.getElementById('bg-geo');
-    for (let i = 0; i < 35; i++) {
-      const p = document.createElement('div');
-      const size = Math.random() * 12 + 3;
-      const type = Math.random() < 0.5 ? 'circle' : (Math.random() < 0.5 ? 'square' : 'diamond');
-      p.style.position = 'absolute';
-      p.style.left = Math.random() * 100 + '%';
-      p.style.top = Math.random() * 100 + '%';
-      p.style.opacity = Math.random() * 0.2 + 0.06;
-
-      if (type === 'circle') {
-        p.style.width = size + 'px';
-        p.style.height = size + 'px';
-        p.style.border = '1px solid #2563eb';
-        p.style.borderRadius = '50%';
-      } else if (type === 'square') {
-        p.style.width = size + 'px';
-        p.style.height = size + 'px';
-        p.style.border = '1px solid #7c3aed';
+    for (let i = 0; i < 28; i++) {
+      const el = document.createElement('div');
+      const size = Math.random() * 10 + 2;
+      const shape = Math.random() < 0.5 ? 'circle' : 'square';
+      el.style.position = 'absolute';
+      el.style.left = Math.random() * 100 + '%';
+      el.style.top = Math.random() * 100 + '%';
+      el.style.opacity = Math.random() * 0.12 + 0.03;
+      if (shape === 'circle') {
+        el.style.width = size + 'px';
+        el.style.height = size + 'px';
+        el.style.border = '1px solid #3b82f6';
+        el.style.borderRadius = '50%';
       } else {
-        p.style.width = size + 'px';
-        p.style.height = size + 'px';
-        p.style.border = '1px solid #475569';
-        p.style.transform = 'rotate(45deg)';
+        el.style.width = size + 'px';
+        el.style.height = size + 'px';
+        el.style.border = '1px solid #94a3b8';
       }
-      p.style.animation = `floatBg ${Math.random()*10 + 8}s infinite linear`;
-      p.style.animationDelay = Math.random()*5 + 's';
-      bgContainer.appendChild(p);
+      el.style.animation = `floatBg ${Math.random() * 12 + 10}s infinite linear`;
+      bgContainer.appendChild(el);
     }
 
-    const styleEl = document.createElement('style');
-    styleEl.textContent = `
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
       @keyframes floatBg {
-        0% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
-        50% { transform: translateY(-40px) rotate(180deg); opacity: 0.2; }
-        100% { transform: translateY(0px) rotate(360deg); opacity: 0.08; }
+        0% { transform: translateY(0px) rotate(0deg); }
+        100% { transform: translateY(-60px) rotate(360deg); }
       }
     `;
-    document.head.appendChild(styleEl);
+    document.head.appendChild(styleSheet);
 
-    // ========== CONSOLE TYPING ANIMATION ==========
+    // Console typing effect
     const consoleOutput = document.getElementById('console-output');
-    const codeSnippets = [
+    const lines = [
       '> initializing ED Notes update...',
-      '> pulling latest educational resources...',
-      '> compiling structured notes...',
-      '> optimizing markdown & assets...',
-      '> adding new interactive modules...',
-      '> running quality checks...',
+      '> pulling educational resources...',
+      '> compiling technical notes...',
+      '> optimizing assets...',
+      '> running integrity checks...',
       '> syncing with doyox core...',
-      '> pre-deployment tests passed.',
-      '> pushing to production branch...',
       '> build in progress...',
-      '> estimated completion: soon',
-      '> redirecting to homepage...',
-      ''
+      '> almost ready...',
+      '> redirecting to homepage shortly...'
     ];
-
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentLine = '';
-
-    function typeConsole() {
-      if (lineIndex >= codeSnippets.length) {
+    let lineIdx = 0, charIdx = 0, current = '';
+    function typeLine() {
+      if (lineIdx >= lines.length) {
         setTimeout(() => {
-          consoleOutput.innerHTML = '<span class="cursor-line"></span>';
-          lineIndex = 0;
-          charIndex = 0;
-          currentLine = '';
-          typeConsole();
-        }, 5000);
+          consoleOutput.innerHTML = '';
+          lineIdx = 0;
+          charIdx = 0;
+          current = '';
+          typeLine();
+        }, 4000);
         return;
       }
-
-      if (charIndex < codeSnippets[lineIndex].length) {
-        currentLine += codeSnippets[lineIndex][charIndex];
-        consoleOutput.innerHTML = '';
-        for (let j = 0; j < lineIndex; j++) {
-          const div = document.createElement('div');
-          div.className = 'line';
-          div.textContent = codeSnippets[j];
-          consoleOutput.appendChild(div);
-        }
-        const currentDiv = document.createElement('div');
-        currentDiv.className = 'line';
-        currentDiv.textContent = currentLine;
-        consoleOutput.appendChild(currentDiv);
-        const cursorSpan = document.createElement('span');
-        cursorSpan.className = 'cursor-line';
-        consoleOutput.appendChild(cursorSpan);
-        consoleOutput.scrollTop = consoleOutput.scrollHeight;
-        charIndex++;
-        setTimeout(typeConsole, 35);
+      if (charIdx < lines[lineIdx].length) {
+        current += lines[lineIdx][charIdx];
+        let html = '';
+        for (let i = 0; i < lineIdx; i++) html += `<div>${lines[i]}</div>`;
+        html += `<div>${current}</div><span class="cursor-line"></span>`;
+        consoleOutput.innerHTML = html;
+        charIdx++;
+        setTimeout(typeLine, 25);
       } else {
-        charIndex = 0;
-        currentLine = '';
-        lineIndex++;
-        setTimeout(typeConsole, 300);
+        lineIdx++;
+        charIdx = 0;
+        current = '';
+        setTimeout(typeLine, 280);
       }
     }
+    typeLine();
 
-    typeConsole();
-
-    // ========== COUNTDOWN TIMER ==========
-    const countdownNumber = document.getElementById('countdown-number');
-    let secondsLeft = 30;
-
-    function updateCountdown() {
-      countdownNumber.textContent = secondsLeft;
-      // Add pulse animation each second
-      countdownNumber.classList.remove('pulse');
-      void countdownNumber.offsetWidth; // reflow trick
-      countdownNumber.classList.add('pulse');
-
-      if (secondsLeft <= 0) {
+    // Countdown: simple, no flashy animations
+    let seconds = 30;
+    const counterSpan = document.getElementById('countdown-number');
+    const timer = setInterval(() => {
+      seconds--;
+      counterSpan.innerText = seconds;
+      if (seconds <= 0) {
         clearInterval(timer);
-        // Redirect to homepage
         window.location.href = '/';
       }
-      secondsLeft--;
-    }
-
-    // Start immediately (show 30 first, then tick)
-    updateCountdown(); // shows 30 and starts pulse
-    const timer = setInterval(updateCountdown, 1000);
+    }, 1000);
   </script>
 </body>
 </html>
