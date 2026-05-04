@@ -3,81 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ED নোটস - ইঞ্জিনিয়ারিং ড্রইং</title>
+  <title>ED নোটস | ইঞ্জিনিয়ারিং ড্রইং</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       background: #f4f7fc;
-      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Roboto', sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       padding: 1.5rem;
       min-height: 100vh;
     }
-    .container { max-width: 1100px; margin: 0 auto; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* header */
     .header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      animation: fadeDown 0.6s ease;
     }
     .header h1 {
       font-size: 2rem;
       font-weight: 700;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
-      -webkit-background-clip: text;
       background-clip: text;
+      -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.3rem;
+      letter-spacing: -0.3px;
     }
-    .header p { color: #2c3e66; font-size: 0.95rem; opacity: 0.8; }
-    .notes-grid {
+    .header p {
+      color: #4a627a;
+      margin-top: 0.3rem;
+    }
+
+    /* cards grid */
+    .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.8rem;
-      margin-bottom: 2rem;
+      margin: 2rem 0;
     }
     .note-card {
       background: white;
       border-radius: 1.5rem;
       padding: 1.5rem;
-      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s ease;
       cursor: pointer;
+      transition: all 0.25s ease;
       border: 1px solid #e9eef3;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
     }
     .note-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.12);
       border-color: #cbdff2;
     }
-    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .note-card h3 { font-size: 1.35rem; font-weight: 600; color: #1a2c4e; margin-bottom: 0.5rem; }
-    .note-card p { color: #4a627a; font-size: 0.9rem; line-height: 1.4; }
+    .card-icon svg {
+      width: 42px;
+      height: 42px;
+      stroke: #1e3c72;
+      stroke-width: 1.5;
+      margin-bottom: 1rem;
+    }
+    .note-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1a2c4e;
+      margin-bottom: 0.4rem;
+    }
+    .note-card p {
+      color: #5a6e8a;
+      font-size: 0.9rem;
+    }
     .badge {
       display: inline-block;
       background: #eef2ff;
-      color: #1e3c72;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
       font-size: 0.7rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 20px;
+      font-weight: 500;
+      color: #1e3c72;
       margin-top: 1rem;
     }
-    .viewer-section {
+
+    /* topic list section */
+    .topic-section {
       background: white;
       border-radius: 1.5rem;
-      padding: 1rem;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-      display: none;
-      animation: fadeIn 0.3s ease;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+      animation: fadeUp 0.4s ease;
     }
-    .viewer-header {
+    .topic-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid #eef2ff;
     }
-    .viewer-title { font-weight: 600; font-size: 1.2rem; color: #0f2b4d; }
+    .topic-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #1f3a64;
+    }
     .back-btn {
       background: #eef2ff;
       border: none;
@@ -85,84 +123,340 @@
       border-radius: 2rem;
       font-weight: 500;
       cursor: pointer;
-      font-size: 0.85rem;
-      color: #1e3c72;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       transition: 0.2s;
     }
-    .back-btn:hover { background: #dce5f5; }
+    .back-btn:hover {
+      background: #e2e8f5;
+    }
+    .topic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .topic-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 0.8rem 0.8rem 1rem;
+      background: #f9fbfd;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #eff3f8;
+    }
+    .topic-item:hover {
+      background: #f1f5f9;
+      transform: translateX(5px);
+    }
+    .topic-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #3b5f8a;
+    }
+    .topic-text {
+      flex: 1;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2c3e66;
+    }
+    .page-badge {
+      font-size: 0.7rem;
+      background: #e9edf2;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      color: #4b6b9b;
+    }
+
+    /* pdf viewer */
+    .viewer-wrapper {
+      margin-top: 1.2rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #eef2ff;
+      animation: fadeIn 0.3s;
+    }
     .pdf-embed {
       width: 100%;
-      height: 85vh;
+      height: 75vh;
       border: none;
-      border-radius: 0.8rem;
-      background: #f8fafc;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #1e3c72;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      margin-top: 0.8rem;
+      transition: 0.2s;
+    }
+    .download-link:hover {
+      background: #143158;
+    }
+
+    /* copyright & animation */
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.75rem;
+      color: #7a8aa8;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-15px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @media (max-width: 640px) {
-      body { padding: 1rem; }
-      .pdf-embed { height: 70vh; }
-      .note-card { padding: 1.2rem; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* hide classes */
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <h1>📐 ইঞ্জিনিয়ারিং ড্রইং নোটস</h1>
-    <p>নিচের যেকোনো টপিক নির্বাচন করুন – PDF সরাসরি দেখাবে</p>
+    <h1>Engineering Drawing Notes</h1>
+    <p>ইঞ্জিনিয়ারিং ড্রইং – অধ্যায়ভিত্তিক ড্রইং সমূহ</p>
   </div>
 
-  <div id="cardsContainer" class="notes-grid">
-    <div class="note-card" data-pdf="./pdfs/2. Isometric Drawing.pdf" data-title="সমান কৌণিক অভিক্ষেপ (Isometric Projection)">
-      <div class="card-icon">📐</div>
-      <h3>সমান কৌণিক অভিক্ষেপ</h3>
-      <p>Isometric Drawing – অধ্যায় ২। সম্পূর্ণ নোট, সমস্যা সমাধান ও চিত্রসহ।</p>
+  <!-- cards section -->
+  <div id="cardsSection" class="cards-grid">
+    <!-- card 1: Isometric Drawing -->
+    <div class="note-card" data-pdf="./pdfs/2. Isometric Drawing.pdf" data-title="Isometric Drawing (সমান কৌণিক)" data-chapter="isometric">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="9" y1="9" x2="15" y2="15" />
+          <line x1="15" y1="9" x2="9" y2="15" />
+        </svg>
+      </div>
+      <h3>Isometric Drawing</h3>
+      <p>সমান কৌণিক অভিক্ষেপ – অধ্যায় ২</p>
       <span class="badge">PDF · ১.২ MB</span>
     </div>
-    <div class="note-card" data-pdf="./pdfs/3. Projection.pdf" data-title="অভিক্ষেপ (Projection)">
-      <div class="card-icon">📏</div>
-      <h3>অভিক্ষেপ (Projection)</h3>
-      <p>অর্থোগ্রাফিক, আইসোমেট্রিক ও বিভিন্ন অভিক্ষেপ পদ্ধতির বিস্তারিত ব্যাখ্যা ও উদাহরণ।</p>
+    <!-- card 2: Projection -->
+    <div class="note-card" data-pdf="./pdfs/3. Projection.pdf" data-title="Projection (অভিক্ষেপ)" data-chapter="projection">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M2 20L22 20" />
+          <path d="M6 4L6 16" />
+          <path d="M18 4L18 16" />
+          <rect x="10" y="4" width="4" height="12" />
+        </svg>
+      </div>
+      <h3>Projection</h3>
+      <p>অর্থোগ্রাফিক ও বিভিন্ন অভিক্ষেপ</p>
       <span class="badge">PDF · ০.৯৫ MB</span>
     </div>
   </div>
 
-  <div id="viewerSection" class="viewer-section">
-    <div class="viewer-header">
-      <span class="viewer-title" id="viewerTitle"></span>
-      <button class="back-btn" id="backBtn">← নোটসের তালিকায় ফিরুন</button>
+  <!-- topic list + pdf viewer (initially hidden) -->
+  <div id="detailSection" class="hidden">
+    <div class="topic-section">
+      <div class="topic-header">
+        <span class="topic-title" id="topicTitle"></span>
+        <button id="closeTopicBtn" class="back-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          সব নোটস
+        </button>
+      </div>
+      <div id="topicListContainer" class="topic-list"></div>
     </div>
-    <iframe id="pdfFrame" class="pdf-embed" src="" title="PDF Viewer"></iframe>
+
+    <div id="pdfViewerContainer" class="hidden">
+      <div class="topic-section">
+        <div class="topic-header">
+          <span class="topic-title" id="pdfViewerTitle"></span>
+          <button id="backToTopicsBtn" class="back-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="15" y1="18" x2="9" y2="12" />
+              <line x1="15" y1="6" x2="9" y2="12" />
+            </svg>
+            লিস্টে ফিরুন
+          </button>
+        </div>
+        <div class="viewer-wrapper">
+          <iframe id="pdfFrame" class="pdf-embed" src=""></iframe>
+        </div>
+        <a id="downloadPdfLink" class="download-link" href="#" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          PDF ডাউনলোড করুন
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>© 2025 doyox.com – All rights reserved</span>
   </div>
 </div>
 
 <script>
-  const cardsContainer = document.getElementById('cardsContainer');
-  const viewerSection = document.getElementById('viewerSection');
-  const pdfFrame = document.getElementById('pdfFrame');
-  const viewerTitle = document.getElementById('viewerTitle');
-  const backBtn = document.getElementById('backBtn');
+  // --------------------------------------------------------------
+  // 📌 অধ্যায় ভিত্তিক ড্রইং / টপিক লিস্ট (আপনার PDF অনুযায়ী এডিট করুন)
+  //    প্রতিটি আইটেমে title, pageNumber (পিডিএফের পৃষ্ঠা নম্বর)
+  // --------------------------------------------------------------
+  const topicsData = {
+    isometric: {
+      fullPdfName: "2. Isometric Drawing.pdf",
+      displayTitle: "Isometric Drawing (সমান কৌণিক অভিক্ষেপ)",
+      items: [
+        { title: "অক্ষর H – সমান কৌণিক অভিক্ষেপ", page: 1 },
+        { title: "অক্ষর N – সমান কৌণিক অভিক্ষেপ", page: 3 },
+        { title: "অক্ষর X – আইসোমেট্রিক ড্রইং", page: 4 },
+        { title: "অক্ষর F – আইসোমেট্রিক ড্রইং", page: 5 },
+        { title: "অক্ষর T – আইসোমেট্রিক ড্রইং", page: 6 },
+        { title: "৩টি ধাপ বিশিষ্ট সিঁড়ি", page: 7 },
+        { title: "পঞ্চভূজ প্রিজম (সমান কৌণিক)", page: 8 },
+        { title: "পিরামিড – আইসোমেট্রিক ভিউ", page: 9 },
+        { title: "বৃত্তের আইসোমেট্রিক প্রজেকশন", page: 12 },
+        { title: "সিলিন্ডার (ভূমির ব্যাস ৪, উচ্চতা ৭)", page: 13 },
+        { title: "কোন ও দূরত্ব অনুযায়ী রেখার অভিক্ষেপ", page: 14 }
+      ]
+    },
+    projection: {
+      fullPdfName: "3. Projection.pdf",
+      displayTitle: "Projection (অভিক্ষেপ)",
+      items: [
+        { title: "কাঠের টুকরার সমকৌণিক অভিক্ষেপ", page: 3 },
+        { title: "বিন্দুর অভিক্ষেপ (ভূপৃষ্ঠ থেকে ১”)", page: 4 },
+        { title: "সরলরেখার অভিক্ষেপ (ভিপি থেকে ০.৫”)", page: 5 },
+        { title: "সরলরেখা ভূমিতে লম্বভাবে”, page: 8 },
+        { title: "৩০° কোণে রেখা – ভূমিতে শায়িত", page: 9 },
+        { title: "বর্গাকার পাতের অভিক্ষেপ (ভূমির সমান্তরাল)", page: 13 },
+        { title: "বর্গাকার পাত ৪৫° নত – এক কর্ণ সোজা", page: 14 },
+        { title: "সুষম পঞ্চভূজ পাত – ৮০° কোণে", page: 16 },
+        { title: "প্রিজম (ভূমি ৬০° ও অক্ষ ৪৫°)", page: 20 },
+        { title: "প্রিজমের অভিক্ষেপ (বিস্তারিত)", page: 21 },
+        { title: "সিলিন্ডারের অভিক্ষেপ (৪৫° নত)", page: 28 }
+      ]
+    }
+  };
 
+  // DOM elements
+  const cardsSection = document.getElementById('cardsSection');
+  const detailSection = document.getElementById('detailSection');
+  const topicListContainer = document.getElementById('topicListContainer');
+  const pdfViewerContainer = document.getElementById('pdfViewerContainer');
+  const pdfFrame = document.getElementById('pdfFrame');
+  const downloadPdfLink = document.getElementById('downloadPdfLink');
+  const topicTitleSpan = document.getElementById('topicTitle');
+  const pdfViewerTitleSpan = document.getElementById('pdfViewerTitle');
+  const closeTopicBtn = document.getElementById('closeTopicBtn');
+  const backToTopicsBtn = document.getElementById('backToTopicsBtn');
+
+  let currentPdfPath = '';
+  let currentChapterKey = '';
+
+  // render topic list for a given chapter
+  function showTopicList(chapterKey) {
+    const data = topicsData[chapterKey];
+    if (!data) return;
+    currentChapterKey = chapterKey;
+    currentPdfPath = `./pdfs/${encodeURIComponent(data.fullPdfName)}`;
+    topicTitleSpan.innerText = `📄 ${data.displayTitle}`;
+
+    // build list items
+    topicListContainer.innerHTML = '';
+    data.items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'topic-item';
+      div.innerHTML = `
+        <div class="topic-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>
+        </div>
+        <div class="topic-text">${escapeHtml(item.title)}</div>
+        <div class="page-badge">পৃষ্ঠা ${item.page}</div>
+      `;
+      div.addEventListener('click', () => {
+        // open PDF at specific page
+        openPdfAtPage(item.page);
+      });
+      topicListContainer.appendChild(div);
+    });
+
+    cardsSection.classList.add('hidden');
+    detailSection.classList.remove('hidden');
+    pdfViewerContainer.classList.add('hidden');
+    topicListContainer.classList.remove('hidden');
+    // reset pdf frame
+    pdfFrame.src = '';
+  }
+
+  function openPdfAtPage(pageNum) {
+    const pdfUrl = `${currentPdfPath}#page=${pageNum}`;
+    pdfFrame.src = pdfUrl;
+    pdfViewerTitleSpan.innerText = `📖 ${topicsData[currentChapterKey].displayTitle} – পৃষ্ঠা ${pageNum}`;
+    downloadPdfLink.href = currentPdfPath;
+    // show pdf viewer, hide list
+    topicListContainer.classList.add('hidden');
+    pdfViewerContainer.classList.remove('hidden');
+  }
+
+  function backToTopicList() {
+    pdfViewerContainer.classList.add('hidden');
+    topicListContainer.classList.remove('hidden');
+    pdfFrame.src = '';
+  }
+
+  function closeDetailAndReturnToCards() {
+    detailSection.classList.add('hidden');
+    cardsSection.classList.remove('hidden');
+    pdfViewerContainer.classList.add('hidden');
+    topicListContainer.classList.remove('hidden');
+    pdfFrame.src = '';
+  }
+
+  // handle card clicks
   document.querySelectorAll('.note-card').forEach(card => {
-    card.addEventListener('click', function() {
-      const pdfUrl = this.getAttribute('data-pdf');
-      const title = this.getAttribute('data-title');
-      pdfFrame.src = encodeURI(pdfUrl);
-      viewerTitle.innerText = title;
-      cardsContainer.style.display = 'none';
-      viewerSection.style.display = 'block';
-      setTimeout(() => viewerSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    card.addEventListener('click', () => {
+      const chapter = card.getAttribute('data-chapter');
+      if (chapter === 'isometric') showTopicList('isometric');
+      else if (chapter === 'projection') showTopicList('projection');
     });
   });
 
-  backBtn.addEventListener('click', () => {
-    cardsContainer.style.display = 'grid';
-    viewerSection.style.display = 'none';
-    pdfFrame.src = '';
-  });
+  closeTopicBtn.addEventListener('click', closeDetailAndReturnToCards);
+  backToTopicsBtn.addEventListener('click', backToTopicList);
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
 </script>
 </body>
 </html>
