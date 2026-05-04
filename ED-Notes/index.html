@@ -1,410 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ED Notes – Under Maintenance</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ED নোটস - ইঞ্জিনিয়ারিং ড্রইং</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #f8fafc;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #f4f7fc;
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Roboto', sans-serif;
+      padding: 1.5rem;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #1e293b;
-      overflow-x: hidden;
     }
-
-    .container {
+    .container { max-width: 1100px; margin: 0 auto; }
+    .header {
       text-align: center;
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      width: 100%;
-      padding: 2rem 1.5rem;
+      margin-bottom: 2.5rem;
     }
-
-    /* Title */
-    .title {
-      font-size: clamp(2.8rem, 8vw, 4.5rem);
+    .header h1 {
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #1e293b, #3b82f6);
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 0.3rem;
     }
-
-    .subtitle {
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #64748b;
-      font-weight: 500;
+    .header p { color: #2c3e66; font-size: 0.95rem; opacity: 0.8; }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
       margin-bottom: 2rem;
     }
-
-    /* Showcase */
-    .showcase {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin: 2rem auto;
-    }
-
-    .robot-area {
-      width: 220px;
-      height: 260px;
-      flex-shrink: 0;
-    }
-
-    .console {
-      background: #0f172a;
-      border-radius: 12px;
-      width: 380px;
-      max-width: 100%;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      text-align: left;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    }
-
-    .console-header {
-      background: #1e293b;
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid #334155;
-    }
-
-    .console-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #475569;
-    }
-    .console-dot:nth-child(1) { background: #ef4444; }
-    .console-dot:nth-child(2) { background: #eab308; }
-    .console-dot:nth-child(3) { background: #22c55e; }
-
-    .console-title {
-      margin-left: auto;
-      font-size: 0.7rem;
-      color: #94a3b8;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .console-body {
-      padding: 16px;
-      height: 200px;
-      overflow-y: auto;
-      background: #0f172a;
-      color: #a5f3c3;
-      font-size: 0.75rem;
-      line-height: 1.5;
-    }
-
-    /* Professional Countdown Section */
-    .countdown-section {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .countdown-label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #475569;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.75rem;
-    }
-
-    .countdown-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 0.5rem 1.8rem;
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      transition: all 0.2s;
-    }
-
-    .countdown-number {
-      font-size: 3rem;
-      font-weight: 600;
-      font-family: 'Inter', monospace;
-      color: #0f172a;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      min-width: 2.2rem;
-      text-align: center;
-    }
-
-    .countdown-unit {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #64748b;
-      text-transform: lowercase;
-    }
-
-    .redirect-hint {
-      font-size: 0.7rem;
-      color: #94a3b8;
-      margin-top: 0.75rem;
-    }
-
-    /* Button */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 28px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: #ffffff;
-      background: #1e293b;
-      border-radius: 40px;
+    .note-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
       transition: all 0.2s ease;
-      margin-top: 1.5rem;
-      border: 1px solid #334155;
+      cursor: pointer;
+      border: 1px solid #e9eef3;
     }
-
-    .btn:hover {
-      background: #0f172a;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    .note-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.15);
+      border-color: #cbdff2;
     }
-
-    .arrow-icon svg {
-      stroke: #ffffff;
-    }
-
-    .footer-note {
-      margin-top: 3rem;
+    .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .note-card h3 { font-size: 1.35rem; font-weight: 600; color: #1a2c4e; margin-bottom: 0.5rem; }
+    .note-card p { color: #4a627a; font-size: 0.9rem; line-height: 1.4; }
+    .badge {
+      display: inline-block;
+      background: #eef2ff;
+      color: #1e3c72;
       font-size: 0.7rem;
-      color: #94a3b8;
-      letter-spacing: 0.5px;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      margin-top: 1rem;
     }
-
-    /* Background geometric shapes (subtle) */
-    .bg-geo {
-      position: fixed;
-      top: 0;
-      left: 0;
+    .viewer-section {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .viewer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .viewer-title { font-weight: 600; font-size: 1.2rem; color: #0f2b4d; }
+    .back-btn {
+      background: #eef2ff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #1e3c72;
+      transition: 0.2s;
+    }
+    .back-btn:hover { background: #dce5f5; }
+    .pdf-embed {
       width: 100%;
-      height: 100%;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
+      height: 85vh;
+      border: none;
+      border-radius: 0.8rem;
+      background: #f8fafc;
     }
-
-    /* Robot animations */
-    .arm-group {
-      transform-origin: var(--origin);
-      animation: var(--anim-name) 1.2s infinite alternate ease-in-out;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes leftArm {
-      0% { transform: rotate(6deg); }
-      100% { transform: rotate(-4deg); }
-    }
-    @keyframes rightArm {
-      0% { transform: rotate(-6deg); }
-      100% { transform: rotate(4deg); }
-    }
-    .robot-eye {
-      animation: blink 4s infinite;
-    }
-    @keyframes blink {
-      0%, 90%, 100% { transform: scaleY(1); }
-      95% { transform: scaleY(0.1); }
+    @media (max-width: 640px) {
+      body { padding: 1rem; }
+      .pdf-embed { height: 70vh; }
+      .note-card { padding: 1.2rem; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-geo" id="bg-geo"></div>
-
-  <div class="container">
-    <h1 class="title">ED Notes </h1>
-    <h2 class="title" >Coming Soon.. </h2>
-    <p class="subtitle">Site Maintenance in Progress</p>
-
-    <div class="showcase">
-      <!-- Robot SVG -->
-      <div class="robot-area">
-        <svg width="100%" height="100%" viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="210" width="160" height="12" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
-          <rect x="40" y="200" width="140" height="12" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
-          <rect x="75" y="190" width="14" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
-          <rect x="131" y="190" width="14" height="20" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
-          <rect x="72" y="130" width="76" height="65" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-          <rect x="86" y="146" width="48" height="28" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
-          <circle cx="110" cy="160" r="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1">
-            <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite"/>
-          </circle>
-          <rect x="96" y="116" width="28" height="15" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
-          <rect x="80" y="60" width="60" height="50" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-          <rect x="86" y="66" width="48" height="30" rx="4" fill="#1e293b"/>
-          <ellipse class="robot-eye" cx="95" cy="78" rx="3.5" ry="4.5" fill="#4ade80"/>
-          <ellipse class="robot-eye" cx="125" cy="78" rx="3.5" ry="4.5" fill="#4ade80"/>
-          <line x1="98" y1="90" x2="122" y2="90" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="110" y1="60" x2="110" y2="42" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="110" cy="36" r="5" fill="#7c3aed" opacity="0.8"/>
-          <g class="arm-group" style="--origin: 74px 138px; --anim-name: leftArm;">
-            <rect x="64" y="138" width="16" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.2"/>
-            <rect x="62" y="185" width="12" height="35" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
-            <circle cx="68" cy="220" r="5" fill="#94a3b8"/>
-          </g>
-          <g class="arm-group" style="--origin: 130px 138px; --anim-name: rightArm;">
-            <rect x="140" y="138" width="16" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.2"/>
-            <rect x="146" y="185" width="12" height="35" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.2"/>
-            <circle cx="152" cy="220" r="5" fill="#94a3b8"/>
-          </g>
-          <rect x="80" y="218" width="60" height="6" rx="2" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
-        </svg>
-      </div>
-
-      <!-- Console -->
-      <div class="console">
-        <div class="console-header">
-          <span class="console-dot"></span>
-          <span class="console-dot"></span>
-          <span class="console-dot"></span>
-          <span class="console-title">ED Notes — build log</span>
-        </div>
-        <div class="console-body" id="console-output">
-          <span class="cursor-line"></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- COUNTDOWN: clean & professional -->
-    <div class="countdown-section">
-      <div class="countdown-label">Returning to doyox.com</div>
-      <div class="countdown-card">
-        <span class="countdown-number" id="countdown-number">30</span>
-        <span class="countdown-unit">seconds</span>
-      </div>
-      <div class="redirect-hint">You'll be automatically redirected</div>
-      <a href="/" class="btn">
-        <span class="arrow-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </span>
-        Go to homepage now
-      </a>
-    </div>
-
-    <div class="footer-note">© doyox · ED Notes</div>
+<div class="container">
+  <div class="header">
+    <h1>📐 ইঞ্জিনিয়ারিং ড্রইং নোটস</h1>
+    <p>নিচের যেকোনো টপিক নির্বাচন করুন – PDF সরাসরি দেখাবে</p>
   </div>
 
-  <script>
-    // Background geometric elements
-    const bgContainer = document.getElementById('bg-geo');
-    for (let i = 0; i < 28; i++) {
-      const el = document.createElement('div');
-      const size = Math.random() * 10 + 2;
-      const shape = Math.random() < 0.5 ? 'circle' : 'square';
-      el.style.position = 'absolute';
-      el.style.left = Math.random() * 100 + '%';
-      el.style.top = Math.random() * 100 + '%';
-      el.style.opacity = Math.random() * 0.12 + 0.03;
-      if (shape === 'circle') {
-        el.style.width = size + 'px';
-        el.style.height = size + 'px';
-        el.style.border = '1px solid #3b82f6';
-        el.style.borderRadius = '50%';
-      } else {
-        el.style.width = size + 'px';
-        el.style.height = size + 'px';
-        el.style.border = '1px solid #94a3b8';
-      }
-      el.style.animation = `floatBg ${Math.random() * 12 + 10}s infinite linear`;
-      bgContainer.appendChild(el);
-    }
+  <div id="cardsContainer" class="notes-grid">
+    <div class="note-card" data-pdf="./pdfs/2. Isometric Drawing.pdf" data-title="সমান কৌণিক অভিক্ষেপ (Isometric Projection)">
+      <div class="card-icon">📐</div>
+      <h3>সমান কৌণিক অভিক্ষেপ</h3>
+      <p>Isometric Drawing – অধ্যায় ২। সম্পূর্ণ নোট, সমস্যা সমাধান ও চিত্রসহ।</p>
+      <span class="badge">PDF · ১.২ MB</span>
+    </div>
+    <div class="note-card" data-pdf="./pdfs/3. Projection.pdf" data-title="অভিক্ষেপ (Projection)">
+      <div class="card-icon">📏</div>
+      <h3>অভিক্ষেপ (Projection)</h3>
+      <p>অর্থোগ্রাফিক, আইসোমেট্রিক ও বিভিন্ন অভিক্ষেপ পদ্ধতির বিস্তারিত ব্যাখ্যা ও উদাহরণ।</p>
+      <span class="badge">PDF · ০.৯৫ MB</span>
+    </div>
+  </div>
 
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-      @keyframes floatBg {
-        0% { transform: translateY(0px) rotate(0deg); }
-        100% { transform: translateY(-60px) rotate(360deg); }
-      }
-    `;
-    document.head.appendChild(styleSheet);
+  <div id="viewerSection" class="viewer-section">
+    <div class="viewer-header">
+      <span class="viewer-title" id="viewerTitle"></span>
+      <button class="back-btn" id="backBtn">← নোটসের তালিকায় ফিরুন</button>
+    </div>
+    <iframe id="pdfFrame" class="pdf-embed" src="" title="PDF Viewer"></iframe>
+  </div>
+</div>
 
-    // Console typing effect
-    const consoleOutput = document.getElementById('console-output');
-    const lines = [
-      '> initializing ED Notes update...',
-      '> pulling educational resources...',
-      '> compiling technical notes...',
-      '> optimizing assets...',
-      '> running integrity checks...',
-      '> syncing with doyox core...',
-      '> build in progress...',
-      '> almost ready...',
-      '> redirecting to homepage shortly...'
-    ];
-    let lineIdx = 0, charIdx = 0, current = '';
-    function typeLine() {
-      if (lineIdx >= lines.length) {
-        setTimeout(() => {
-          consoleOutput.innerHTML = '';
-          lineIdx = 0;
-          charIdx = 0;
-          current = '';
-          typeLine();
-        }, 4000);
-        return;
-      }
-      if (charIdx < lines[lineIdx].length) {
-        current += lines[lineIdx][charIdx];
-        let html = '';
-        for (let i = 0; i < lineIdx; i++) html += `<div>${lines[i]}</div>`;
-        html += `<div>${current}</div><span class="cursor-line"></span>`;
-        consoleOutput.innerHTML = html;
-        charIdx++;
-        setTimeout(typeLine, 25);
-      } else {
-        lineIdx++;
-        charIdx = 0;
-        current = '';
-        setTimeout(typeLine, 280);
-      }
-    }
-    typeLine();
+<script>
+  const cardsContainer = document.getElementById('cardsContainer');
+  const viewerSection = document.getElementById('viewerSection');
+  const pdfFrame = document.getElementById('pdfFrame');
+  const viewerTitle = document.getElementById('viewerTitle');
+  const backBtn = document.getElementById('backBtn');
 
-    // Countdown: simple, no flashy animations
-    let seconds = 30;
-    const counterSpan = document.getElementById('countdown-number');
-    const timer = setInterval(() => {
-      seconds--;
-      counterSpan.innerText = seconds;
-      if (seconds <= 0) {
-        clearInterval(timer);
-        window.location.href = '/';
-      }
-    }, 1000);
-  </script>
+  document.querySelectorAll('.note-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const pdfUrl = this.getAttribute('data-pdf');
+      const title = this.getAttribute('data-title');
+      pdfFrame.src = encodeURI(pdfUrl);
+      viewerTitle.innerText = title;
+      cardsContainer.style.display = 'none';
+      viewerSection.style.display = 'block';
+      setTimeout(() => viewerSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    });
+  });
+
+  backBtn.addEventListener('click', () => {
+    cardsContainer.style.display = 'grid';
+    viewerSection.style.display = 'none';
+    pdfFrame.src = '';
+  });
+</script>
 </body>
 </html>
